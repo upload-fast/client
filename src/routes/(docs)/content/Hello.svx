@@ -1,0 +1,37 @@
+---
+title: 'Introduction'
+---
+
+# {title} 
+Uploadfast allows you to build file uploads into your web application.
+File Uploads for *all* of us.
+
+
+### The missing marketing section
+So let's say you're a developer trying to build a website or mobile app that allows users to upload images and other types of content. 
+e.g e-commerce website, e-commerce marketplaces, social media app, airchat
+
+
+I often have to build these sites for freelance work or side projects.. 
+I don't look forward to implementing file uploads.
+Every project has different requirements, 
+I often find myself just needing the URL to the file so i can access over the internet and then serve it to my user on the frontend.
+
+But this can get tedious.
+- Building UI components, 
+- Reading the uploaded files from the native interface (to show previews, calculate size..), 
+- Working with an image cropper... and worst of all
+
+*Having to read and re-read API docs*
+
+Obviously **THIS SUCKS**, so i built uploadfast😄
+
+```typescript
+Type Token = {
+    id: string;
+    building: boolean
+}
+
+const code = 'Iyimide is creating something special for the world'
+const arr = ["Iyimide", "Adekile"]
+```
