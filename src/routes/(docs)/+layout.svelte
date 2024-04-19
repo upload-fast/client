@@ -2,6 +2,6 @@
 	import '$lib/prism-shades-of-purple.css';
 </script>
 
-<main class="mx-auto max-w-4xl py-20">
+<section class="mx-auto my-24 max-w-4xl">
 	<slot />
-</main>
+</section>

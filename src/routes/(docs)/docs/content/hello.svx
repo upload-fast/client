@@ -1,0 +1,41 @@
+---
+title: 'Introduction'
+---
+
+# {title} 
+Uploadfast is a simple file-upload - as - a - service that helps developers who are shipping fast, ship file uploads in record time.
+
+### The missing marketing section
+Implementing file uploads in your web application can be such a drag.
+It could be an e-commerce site where the admin has to upload images of their products. 
+
+It could be an image sharing app or a file compression tool.
+You could even be building airchat.
+
+I often run into file uploads on the projects I work on, I wondered why I have to do so much just get the URL of the asset I want to serve to my user. 
+All i need is link please, don't stress me too much.
+
+
+File uploads can get very tedious.
+- Building UI components from scratch and styling them properly,
+- Reading the picked files from the native interface (i.e if you want to show a preview)
+- Working with an image cropper... and worst of all
+
+*Having to read and re-read API docs*
+
+**THIS SUCKS**.
+
+
+So i built uploadfast😄
+
+Get that url to the user uploaded asset and serve!
+
+```typescript
+Type Token = {
+    id: string;
+    building: boolean
+}
+
+const code = 'Iyimide is creating something special for the world'
+const arr = ["Iyimide", "Adekile"]
+```
