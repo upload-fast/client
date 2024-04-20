@@ -1,1 +1,1 @@
-<p>Hi</p>
+<p class="text-2xl font-bold">Uploadfast⚡</p>
