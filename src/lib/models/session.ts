@@ -19,4 +19,6 @@ export const SessionSchema = new mongoose.Schema(
 );
 
 const sessionModel = () => mongoose.model('sessions', SessionSchema);
-const Session = (mongoose.models['sessions'] || sessionModel()) as ReturnType<typeof sessionModel>;
+export const Session = (mongoose.models['sessions'] || sessionModel()) as ReturnType<
+	typeof sessionModel
+>;
