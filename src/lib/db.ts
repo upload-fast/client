@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
-import { MONGO_URI } from '$env/static/private';
 
-export const connectToDb = async () => {
+export const connectToDb = async (uri: string) => {
 	try {
 		//@ts-ignore
-		await mongoose.connect(process.env.MONGO_URI!, { dbName: 'Uploadflare' });
+		await mongoose.connect(uri, { dbName: 'Uploadflare' });
 		console.log('Connected!');
 	} catch (e) {
 		console.log(e);

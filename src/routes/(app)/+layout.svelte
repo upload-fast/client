@@ -1,5 +1,5 @@
 <script>
-	import Sidebar from './blocks/Sidebar.svelte';
+	import Sidebar from './^blocks/Sidebar.svelte';
 </script>
 
 <main class="flex min-h-screen w-full flex-col bg-muted/40 p-0">

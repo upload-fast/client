@@ -10,7 +10,7 @@
 
 	<Button
 		href="/dashboard"
-		class="w-28 text-lg text-primary-foreground hover:scale-105"
+		class="hidden w-28 text-lg text-primary-foreground hover:scale-105 sm:block"
 		size="lg"
 		variant="link"
 		>Log in
