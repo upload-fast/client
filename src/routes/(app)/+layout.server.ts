@@ -1,6 +1,7 @@
-import { connectToDb } from '$lib/db';
-import { MONGO_URI } from '$env/static/private';
+export async function load({ locals }) {
+	const session = await locals.auth();
 
-export async function load() {
-	//	await connectToDb(MONGO_URI);
+	return {
+		session
+	};
 }

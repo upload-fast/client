@@ -39,13 +39,13 @@
 		"@fontsource-variable/instrument-sans": "^5.0.4",
 		"@lucia-auth/adapter-mongodb": "^1.0.3",
 		"@radix-ui/colors": "^3.0.0",
-		"arctic": "^1.5.0",
 		"bits-ui": "^0.21.4",
 		"clsx": "^2.1.0",
 		"lucia": "^3.1.1",
 		"lucide-svelte": "^0.372.0",
 		"mongodb": "^6.5.0",
 		"mongoose": "^8.3.2",
+		"svelte-sonner": "^0.3.22",
 		"tailwind-merge": "^2.2.2",
 		"tailwind-variants": "^0.2.1"
 	}

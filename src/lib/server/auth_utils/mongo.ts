@@ -7,7 +7,7 @@ if (!MONGODB_URI) {
 }
 
 const uri: string = MONGODB_URI;
-const options: MongoClientOptions = {};
+const options = {} as MongoClientOptions;
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;

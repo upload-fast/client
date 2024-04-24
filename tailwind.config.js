@@ -24,7 +24,7 @@ const config = {
 				}
 			},
 			colors: {
-				border: 'hsl(var(--border) / <alpha-value>)',
+				border: 'var(--border)',
 				input: 'hsl(var(--input) / <alpha-value>)',
 				ring: 'hsl(var(--ring) / <alpha-value>)',
 				background: 'var(--background)',

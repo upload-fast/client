@@ -11,7 +11,7 @@
 
 	const links = [
 		{ to: '/', Icon: Home, title: 'Dashboard' },
-		{ to: '/file', Icon: FileStack, title: 'Files' },
+		{ to: '/files', Icon: FileStack, title: 'Files' },
 		{ to: '/settings', Icon: Settings, title: 'Settings' }
 	];
 </script>
