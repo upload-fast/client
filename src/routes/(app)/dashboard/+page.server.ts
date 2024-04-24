@@ -1,4 +1,5 @@
 import { Project } from '$lib/models/plan.js';
+import { User } from '$lib/models/user.js';
 import { fail, redirect, error } from '@sveltejs/kit';
 
 export async function load({ locals }) {
@@ -15,22 +16,24 @@ export const actions = {
 			const data = await request.formData();
 			const name = data.get('name');
 			const plan = data.get('plan')?.toString();
-			const usr = await locals.auth();
+			const session = await locals.auth();
 
-			if (!usr || !name) {
+			if (plan === 'undefined' || !name) {
 				return fail(400, { error: true, payload: 'Missing required values' });
 			}
-			await Project.create({
-				name,
-				user: usr?.user?.id,
-				plan_type: plan,
-				storageUsed: 0,
-				storageCap: 512000
-			});
-			redirect(302, '/dashboard/files');
+
+			if (!session) {
+				return fail(400, { error: true, payload: 'No user found' });
+			}
+
+			const newProject = { name, plan_type: plan?.toString(), storageUsed: 0 };
+
+			await User.findOneAndUpdate({ name: session?.user?.name }, { plan: new Project(newProject) })
+				.exec()
+				.then();
 		} catch (e: any) {
-			console.log(e);
 			return fail(400, { error: true, payload: e.message });
 		}
+		redirect(307, '/dashboard/files');
 	}
 };

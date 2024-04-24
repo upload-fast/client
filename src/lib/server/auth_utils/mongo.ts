@@ -2,6 +2,8 @@
 import { MongoClient, MongoClientOptions } from 'mongodb';
 import { MONGODB_URI } from '$env/static/private';
 
+import mongoose from 'mongoose';
+
 if (!MONGODB_URI) {
 	throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
 }
@@ -16,14 +18,12 @@ if (process.env.NODE_ENV === 'development') {
 	// In development mode, use a global variable so that the value
 	// is preserved across module reloads caused by HMR (Hot Module Replacement).
 	if (!(globalThis as any)._mongoClientPromise) {
-		client = new MongoClient(uri, options);
+		client = new mongoose.mongo.MongoClient(uri, options);
 		(globalThis as any)._mongoClientPromise = client.connect();
 	}
 	clientPromise = (globalThis as any)._mongoClientPromise;
 } else {
-	// In production mode, it's best to not use a global variable.
-	client = new MongoClient(uri, options);
-	clientPromise = client.connect();
+	clientPromise = new mongoose.mongo.MongoClient(uri, options).connect();
 }
 
 // Export a module-scoped MongoClient promise. By doing this in a

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 	import SelectPlan from '$lib/components/SelectPlan.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import Input from '$lib/components/ui/input/input.svelte';
@@ -12,10 +13,6 @@
 
 	let form: any;
 	let loading = false;
-
-	function handleSubmit(event: any) {
-		form.submit();
-	}
 
 	const submitForm: SubmitFunction = (input) => {
 		loading = true;
