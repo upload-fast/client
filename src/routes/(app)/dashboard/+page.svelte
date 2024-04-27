@@ -15,5 +15,11 @@
 </script>
 
 <GithubAuthModal openIt={!Boolean(data.session)} />
-<CreateProject />
+
+{#if Boolean(data.plan)}
+	<p>Welcome back {data.session?.user?.name}</p>
+	<p>Plan - {data?.plan?.name}</p>
+{:else}
+	<CreateProject />
+{/if}
 <Toaster richColors />

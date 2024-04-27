@@ -7,11 +7,12 @@ export const planSchema = new Schema(
 		active: Boolean,
 		plan_type: {
 			type: String,
-			enum: ['Trial', 'Tier 1', 'Tier 2']
+			required: true
 		},
 		storageCap: {
-			type: Types.Decimal128,
-			default: function () {
+			type: Number,
+			default: function (this) {
+				//@ts-expect-error
 				switch (this.plan_type) {
 					case 'Trial':
 						return 512000;
@@ -19,12 +20,13 @@ export const planSchema = new Schema(
 						return 5242880;
 					case 'Tier 2':
 						return 10485760;
+					default:
+						return '512000';
 				}
 			}
 		},
 		storageUsed: Number,
 		paid: { type: Boolean, default: false },
-		user: Types.ObjectId,
 		name: String
 	},
 	{

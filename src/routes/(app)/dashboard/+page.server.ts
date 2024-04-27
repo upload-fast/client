@@ -1,12 +1,19 @@
 import { Project } from '$lib/models/plan.js';
 import { User } from '$lib/models/user.js';
 import { fail, redirect, error } from '@sveltejs/kit';
+import { format } from '@auth/mongodb-adapter';
 
 export async function load({ locals }) {
 	const session = await locals.auth();
+	let user = null;
+
+	if (session) {
+		user = await User.findOne({ email: session?.user?.email }).exec();
+	}
 
 	return {
-		session
+		session,
+		plan: user ? (JSON.parse(JSON.stringify(user?.plan)) as typeof user.plan) : null
 	};
 }
 

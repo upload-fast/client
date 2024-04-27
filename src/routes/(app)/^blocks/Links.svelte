@@ -7,7 +7,7 @@
 	const appendRoute = (route: string) =>
 		route === '/' ? route.replace('/', '/dashboard') : route.replace('/', '/dashboard/');
 
-	const isActive = (route: string) => appendRoute(route) === $page.url.pathname;
+	$: isActive = (route: string) => appendRoute(route) === $page.url.pathname;
 
 	const links = [
 		{ to: '/', Icon: Home, title: 'Dashboard' },
