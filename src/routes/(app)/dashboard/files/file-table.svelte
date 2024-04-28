@@ -53,7 +53,7 @@
 	const { headerRows, rows, tableAttrs, tableBodyAttrs } = table.createViewModel(columns);
 </script>
 
-<div class="max-w-4xl rounded-lg border-2 bg-muted px-3 pb-2.5 pt-4">
+<div class="max-w-[60rem] rounded-sm border bg-muted/20 px-3 pb-2.5 pt-4">
 	<Table.Root {...$tableAttrs} class=" w-full text-lg">
 		<Table.Header>
 			{#each $headerRows as headerRow (headerRow.id)}
@@ -73,7 +73,7 @@
 		<Table.Body {...$tableBodyAttrs}>
 			{#each $rows as row (row.id)}
 				<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-					<Table.Row {...rowAttrs}>
+					<Table.Row {...rowAttrs} class="hover:bg-inherit">
 						{#each row.cells as cell (cell.id)}
 							<Subscribe attrs={cell.attrs()} let:attrs>
 								<Table.Cell {...attrs} class="pt-4">

@@ -2,19 +2,10 @@ import { Project } from '$lib/models/plan.js';
 import { User } from '$lib/models/user.js';
 import { fail, redirect, error } from '@sveltejs/kit';
 import { format } from '@auth/mongodb-adapter';
+import { SERVER_URL } from '$env/static/private';
 
-export async function load({ locals }) {
-	const session = await locals.auth();
-	let user = null;
-
-	if (session) {
-		user = await User.findOne({ email: session?.user?.email }).exec();
-	}
-
-	return {
-		session,
-		plan: user ? (JSON.parse(JSON.stringify(user?.plan)) as typeof user.plan) : null
-	};
+interface ApiReqBody {
+	user_id: string;
 }
 
 export const actions = {
@@ -42,5 +33,35 @@ export const actions = {
 			return fail(400, { error: true, payload: e.message });
 		}
 		redirect(307, '/dashboard/files');
+	},
+
+	createKey: async ({ locals }) => {
+		const session = await locals.auth();
+
+		const userId = await User.findOne({ email: session?.user?.email })
+			.select('_id')
+			.exec();
+
+		const reqBody = {
+			user_id: userId?._id.toString()
+		};
+
+		try {
+			const response = await fetch('http://localhost:3000/api-key', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(reqBody)
+			});
+
+			if (!response.ok) {
+				return fail(400, { error: true, payload: response.body });
+			} else {
+				return { data: await response.json() };
+			}
+		} catch (e) {
+			console.log(e);
+		}
 	}
 };
