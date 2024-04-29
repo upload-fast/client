@@ -29,15 +29,9 @@ dependencies:
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
-  lucia:
-    specifier: ^3.1.1
-    version: 3.1.1
   lucide-svelte:
     specifier: ^0.372.0
     version: 0.372.0(svelte@4.2.7)
-  mongodb:
-    specifier: ^6.5.0
-    version: 6.5.0
   mongoose:
     specifier: ^8.3.2
     version: 8.3.2

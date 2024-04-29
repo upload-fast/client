@@ -1,11 +1,25 @@
+import { UFile } from '$lib/models/files.js';
 import { Project } from '$lib/models/plan.js';
 import { User } from '$lib/models/user.js';
 import { fail, redirect, error } from '@sveltejs/kit';
-import { format } from '@auth/mongodb-adapter';
-import { SERVER_URL } from '$env/static/private';
 
 interface ApiReqBody {
 	user_id: string;
+}
+
+export async function load({ locals }) {
+	const session = await locals.auth();
+	let user = null;
+
+	if (session) {
+		user = await User.findOne({ email: session?.user?.email }).exec();
+	}
+	//@ts-ignore
+	const count = await UFile.countDocuments({ plan_id: user?.plan?._id });
+
+	return {
+		fileCount: count
+	};
 }
 
 export const actions = {
@@ -62,6 +76,7 @@ export const actions = {
 			}
 		} catch (e) {
 			console.log(e);
+			return fail(400, { error: true, payload: e });
 		}
 	}
 };

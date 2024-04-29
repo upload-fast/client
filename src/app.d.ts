@@ -10,7 +10,7 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 		interface Locals {
-			_user: string | undefined;
+			_user: any;
 		}
 	}
 }
