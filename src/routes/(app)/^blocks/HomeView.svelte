@@ -8,7 +8,7 @@
 
 	export let plan: any;
 
-	export let count: number;
+	export let count: { total: number; thisWeek: number };
 
 	const percentUsed = getPercentOf({ v1: plan.storageUsed, v2: plan.storageCap });
 </script>
@@ -44,10 +44,12 @@
 	<Card.Root class="max-w-sm">
 		<Card.Header class="pb-2">
 			<Card.Description>Files Stored</Card.Description>
-			<Card.Title class="text-4xl">{count}</Card.Title>
+			<Card.Title class="text-4xl">{count.total}</Card.Title>
 		</Card.Header>
 		<Card.Content>
-			<div class="text-xs text-muted-foreground">{3} uploaded in the last week</div>
+			<div class="text-xs text-muted-foreground">
+				{count.thisWeek} files uploaded in the last week
+			</div>
 		</Card.Content>
 		<Card.Footer>
 			<Progress value={100} aria-label="25% increase" />

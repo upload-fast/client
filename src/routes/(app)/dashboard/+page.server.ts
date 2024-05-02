@@ -10,15 +10,22 @@ interface ApiReqBody {
 export async function load({ locals }) {
 	const session = await locals.auth();
 	let user = null;
+	const lastWeek = new Date();
+	lastWeek.setDate(lastWeek.getDate() - 7); // Set the date to 7 days ago
 
 	if (session) {
 		user = await User.findOne({ email: session?.user?.email }).exec();
 	}
 	//@ts-ignore
 	const count = await UFile.countDocuments({ plan_id: user?.plan?._id });
+	const countWithinWeek = await UFile.countDocuments({
+		//@ts-ignore
+		plan_id: user?.plan?._id,
+		createdAt: { $gte: lastWeek }
+	});
 
 	return {
-		fileCount: count
+		fileCount: { total: count, thisWeek: countWithinWeek }
 	};
 }
 
