@@ -5,19 +5,20 @@
 <div class="flex flex-row items-center justify-between px-8 py-2">
 	<div class="flex flex-row items-center">
 		<img src="/uploadfast.png" alt="logo" class="h-20 w-20 object-scale-down" />
-		<p class="text-4xl font-bold">uploadfast⚡</p>
+		<p class="text-4xl font-bold">
+			upload <span
+				class="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"
+				>fast</span
+			>⚡
+		</p>
 	</div>
 
-	<Button
-		href="/dashboard"
-		class="hidden w-28 text-lg text-primary-foreground hover:scale-105 sm:block"
-		size="lg"
-		variant="link"
-		>Log in
+	<Button class="rounded-sm bg-teal-800 text-white">
+		<a href="/dashboard">Go to dashboard</a>
 	</Button>
 </div>
 
-<div class="mx-auto my-24 flex flex-col items-center px-2 sm:px-0 md:max-w-xl">
+<div class="mx-auto my-16 flex flex-col items-center px-2 sm:px-0 md:max-w-xl">
 	<h1
 		class="text-wrap-balance text-center text-5xl font-bold !leading-relaxed text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl"
 	>
@@ -37,8 +38,8 @@
 		<Button class="mx-auto text-lg text-white/90" size="lg" variant="outline" href="/docs"
 			>Read the docs</Button
 		>
-		<Button class="mx-auto text-lg text-white/90" size="lg" href="/dashboard"
-			>Start shipping🚀</Button
+		<Button class="mx-auto bg-pink-500 text-lg text-white/90" size="lg" href="/dashboard"
+			>Dive straight in🚀</Button
 		>
 	</div>
 </div>

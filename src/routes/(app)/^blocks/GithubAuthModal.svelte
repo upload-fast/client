@@ -24,7 +24,7 @@
 >
 	<Dialog.Content>
 		<Dialog.Header>
-			<Dialog.Title class="mb-0.5 text-2xl">Sign up</Dialog.Title>
+			<Dialog.Title class="mb-0.5 text-2xl">Jump right in</Dialog.Title>
 			<Dialog.Description class="ml-0.5">
 				It's time to ship file uploads like the sentient developer you are.
 			</Dialog.Description>
@@ -35,8 +35,7 @@
 			class="text-md mx-auto mt-4 w-[70%] gap-1.5 bg-muted text-white hover:bg-muted/80"
 			on:click={() => signIn()}
 		>
-			Sign in with Github
-			<Github size={14} fill={'white'} />
+			Proceed
 		</Button>
 	</Dialog.Content>
 </Dialog.Root>

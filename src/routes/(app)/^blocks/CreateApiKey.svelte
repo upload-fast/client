@@ -2,7 +2,8 @@
 	import { enhance } from '$app/forms';
 	import { Button } from '$lib/components/ui/button';
 	import type { SubmitFunction } from '@sveltejs/kit';
-	import Circle from 'lucide-svelte/icons/circle';
+	import Circle from 'lucide-svelte/icons/loader-circle';
+	import { Toaster } from 'svelte-sonner';
 
 	let loading = false;
 
@@ -19,6 +20,9 @@
 	<Button type="submit">
 		{#if loading}
 			<Circle class="mx-3 animate-spin" size={12} />
-		{/if}Create API key</Button
-	>
+		{/if}
+		<slot>Create API key</slot>
+	</Button>
 </form>
+
+<Toaster richColors />

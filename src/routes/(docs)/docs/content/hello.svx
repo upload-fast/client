@@ -1,11 +1,49 @@
 ---
-title: 'Introduction'
+title: 'The Docs.'
 description: 'Start using uploadfast in your app'
 ---
 
 # {title} 
-Ship file uploads from your web app (and soon, mobile app) in record time.
+Ship file uploads from your web app in record time.
+--
+Most of the time you just need 
+- Some storage. 
+- The link to the stored file 
+- API key to authenticate your requests to the storage endpoint.
+If you need a more advanced solution, you can use cloudinary or cloudflare images.
 
+> If you like the DX of our product over alternatives, help us build a more robust product by spreading the word and buying more storage.
+
+
+
+#### Installation
+```powershell
+pnpm add uploadfast
+```
+
+```powershell
+npm i uploadfast
+```
+
+### React
+Use uploadfast in your react app
+```jsx
+const Res = () => {
+    return <div>Yes daddy</div>
+}
+```
+
+### Vue
+Use uploadfast in your vue app
+```jsx
+const Res = () => {
+    return <div>Yes daddy</div>
+}
+```
+
+### Svelte
+Use uploadfast in your svelte app.
+This site is built with svelte btw
 ```jsx
 const Res = () => {
     return <div>Yes daddy</div>

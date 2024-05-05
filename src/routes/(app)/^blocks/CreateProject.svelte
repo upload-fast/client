@@ -9,7 +9,7 @@
 	import Plus from 'lucide-svelte/icons/file-up';
 	import Circle from 'lucide-svelte/icons/loader-circle';
 
-	let showProjectInitialize = false;
+	let showProjectInitialize = true;
 
 	let form: any;
 	let loading = false;
