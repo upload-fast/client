@@ -3,16 +3,20 @@ import { format } from '@auth/mongodb-adapter';
 import type { Ufile } from './types';
 import { User } from '$lib/models/user';
 import { convertObjectIds } from '$lib/server/auth_utils/_auth';
+import { redirect } from '@sveltejs/kit';
 
 export async function load({ locals }) {
+	// Get session
 	const session = await locals.auth();
-	let user = null;
 
-	if (session) {
-		user = await User.findOne({ email: session?.user?.email }).exec();
+	// Redirect if not authenticated
+	if (!session) {
+		redirect(307, '/dashboard/');
 	}
 
-	//@ts-expect-error
+	// Acess locals._user! Completely type safe
+	let user = locals._user;
+
 	const files = await UFile.find({ plan_id: user?.plan?._id });
 
 	const serializableFiles = files.map((item) => {

@@ -67,14 +67,15 @@ export const actions = {
 	},
 
 	createKey: async ({ locals }) => {
-		const session = await locals.auth();
+		// const session = await locals.auth();
 
-		const userId = await User.findOne({ email: session?.user?.email })
-			.select('_id')
-			.exec();
+		// const userId = await User.findOne({ email: session?.user?.email })
+		// 	.select('_id')
+		// 	.exec();
 
+		const user = locals._user;
 		const reqBody = {
-			user_id: userId?._id.toString()
+			user_id: user?._id?.toString()
 		};
 
 		const response = await fetch('https://uploadfast-server.fly.dev/api-key', {
