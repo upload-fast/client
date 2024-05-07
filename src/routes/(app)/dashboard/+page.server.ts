@@ -67,12 +67,6 @@ export const actions = {
 	},
 
 	createKey: async ({ locals }) => {
-		// const session = await locals.auth();
-
-		// const userId = await User.findOne({ email: session?.user?.email })
-		// 	.select('_id')
-		// 	.exec();
-
 		const user = locals._user;
 		const reqBody = {
 			user_id: user?._id?.toString()

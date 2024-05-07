@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
+	import type { PageData } from './$types';
+	import Pricing from './pricing.svelte';
+
+	export let data: PageData;
 </script>
 
 <div class="flex flex-row items-center justify-between px-8 py-2">
@@ -13,14 +17,14 @@
 		</p>
 	</div>
 
-	<Button class="rounded-sm bg-teal-800 text-white">
+	<Button class="hidden rounded-sm bg-teal-800 text-white sm:block">
 		<a href="/dashboard">Go to dashboard</a>
 	</Button>
 </div>
 
 <div class="mx-auto my-16 flex flex-col items-center px-2 sm:px-0 md:max-w-xl">
 	<h1
-		class="text-wrap-balance text-center text-5xl font-bold !leading-relaxed text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl"
+		class="text-wrap-balance text-center text-4xl font-bold !leading-relaxed sm:text-5xl md:text-6xl lg:text-7xl"
 	>
 		Ship file uploads in <span
 			class="relative ml-2.5 inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:rounded-md before:bg-pink-500"
@@ -43,3 +47,5 @@
 		>
 	</div>
 </div>
+
+<Pricing data={data.pricingData} />

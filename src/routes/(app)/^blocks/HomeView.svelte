@@ -83,12 +83,12 @@
 						<Copy class="text-white" size={14} />
 					</button>
 				</div>
-
+				<!-- 
 				<span
 					class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-sm bg-red-500/30"
 				>
 					<Trash2 size={14} class="text-red-300" />
-				</span>
+				</span> -->
 
 				<span class=" rounded-xl bg-red-500/30 px-2 py-1 text-sm text-red-300"
 					>{key.active ? 'active' : 'inactive'}</span

@@ -1,0 +1,31 @@
+[
+	{
+		"name": "Tier 1",
+		"storageCap": "500MB",
+		"description": "Lowest tier for testing / proof of concept, early development and non-existent traffic.",
+		"uploadsPerMonth": 200,
+		"price": 6,
+		"support": "Limited support via email."
+	},
+	{
+		"name": "Tier 2",
+		"storageCap": "5GB",
+		"description": "For production apps with low to medium file upload needs.",
+		"uploadsPerMonth": 5000,
+		"price": 56,
+		"support": "Founder responds to your emails within 1 hour."
+	},
+	{
+		"name": "Tier 3",
+		"storageCap": "100GB",
+		"description": "If your users are doing lot's of (large) file uploads then this is the plan for you!",
+		"uploadsPerMonth": 20000,
+		"price": 180,
+		"support": "Founder will call you if you have an issue and fix it with you.",
+		"features": [
+			"Resumable file uploads.",
+			"Export all files - (Coming soon)",
+			"Migrate from Cloudinary or UploadFast - (Coming soon)"
+		]
+	}
+]
