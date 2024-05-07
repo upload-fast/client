@@ -1,6 +1,6 @@
 <script lang="ts">
 	//@ts-ignore
-	import Hello from './content/hello.svx';
+	import Hello from './content/intro.svx';
 </script>
 
 <section class="max-w-6xl">
