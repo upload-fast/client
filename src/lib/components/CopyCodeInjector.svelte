@@ -18,22 +18,22 @@
 				navigator.clipboard.writeText(text);
 				copyButton.innerText = 'Saved!';
 				pre.appendChild(copyButton);
-				alert('Code block copied');
 			});
 			copyButton.style.position = 'absolute';
-			copyButton.style.top = '10px';
+			copyButton.style.top = '4px';
 			copyButton.style.right = '10px';
-			copyButton.style.backgroundColor = ' #0aa370';
-			copyButton.style.color = 'white';
+			copyButton.style.backgroundColor = 'rgb(41 37 36 / 0.8)';
+			copyButton.style.color = '#ebdbb2';
+			copyButton.style.fontWeight = 'bolder';
 			copyButton.style.border = 'none';
 			copyButton.style.padding = '4px 12px';
 			copyButton.style.textAlign = 'center';
 			copyButton.style.textDecoration = 'none';
 			copyButton.style.display = 'inline-block';
-			copyButton.style.fontSize = '16px';
+			copyButton.style.fontSize = '12px';
 			copyButton.style.margin = '4px 2px';
 			copyButton.style.cursor = 'pointer';
-			copyButton.style.borderRadius = '12px';
+			copyButton.style.borderRadius = '8px';
 			copyButton.innerText = btnText;
 			pre.appendChild(copyButton);
 		}

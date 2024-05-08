@@ -3,31 +3,33 @@ title: 'Introducing UploadFast'
 description: 'Start using uploadfast in your app'
 ---
 
-## {title} 
+# {title} 
 
 Ship file uploads from your web app in record time.
 --
-Most of the time you just need one thing out of your file upload forays.
+Most of the time you need one thing out of your file upload forays.
 - The link to the file that was stored 
 
 So you can access it, download it, display it.. whatever.
 
-
-All other features are built on top of this concept thanks to Cloudflare R2.
-
-If you need an "advanced" solution with a bunch of uneccessary features, you can use cloudinary or cloudflare images.
-
-> If you like the DX of our product over alternatives, help us build a more robust product by spreading the word or buying a bigger plan!
+If you need an "advanced" solution with a bunch of uneccessary features, you can use cloudinary, aws S3 or cloudflare images.
 
 
----
+UploadFast helps save you time and let's you prototype fast by doing one thing well.
+
+
+
 #### Installation
 ```powershell
-pnpm add uploadfast
+pnpm add @uploadfast/client
 ```
 
 ```powershell
-npm i uploadfast
+npm i @uploadfast/client
+```
+
+```powershell
+bun add @uploadfast/client
 ```
 
 #### React
