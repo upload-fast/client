@@ -39,7 +39,7 @@
 	</p>
 
 	<div class="mt-10 flex flex-col gap-4 sm:flex-row">
-		<Button class="mx-auto text-lg text-white/90" size="lg" variant="outline" href="/docs"
+		<Button class="mx-auto text-lg text-white/90" size="lg" variant="outline" href="/docs/intro"
 			>Read the docs</Button
 		>
 		<Button class="mx-auto bg-pink-500 text-lg text-white/90" size="lg" href="/dashboard"

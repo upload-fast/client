@@ -1,0 +1,18 @@
+
+<script>
+export let code
+export let fwk
+
+import { onMount } from 'svelte';
+
+onMount(() => {
+    const foo = document.getElementById(fwk)
+
+    foo.innerText = code
+})
+</script>
+
+<pre class = "language-js"> 
+    <code id={fwk} class = "language-js"/>
+</pre>
+

@@ -9,10 +9,10 @@
 	},
 	{
 		"name": "Tier 2",
-		"storageCap": "5GB",
+		"storageCap": "50GB",
 		"description": "For production apps with low to medium file upload needs.",
 		"uploadsPerMonth": 5000,
-		"price": 56,
+		"price": 48,
 		"support": "Founder responds to your emails within 1 hour."
 	},
 	{
@@ -20,7 +20,7 @@
 		"storageCap": "100GB",
 		"description": "If your users are doing lot's of (large) file uploads then this is the plan for you!",
 		"uploadsPerMonth": 20000,
-		"price": 180,
+		"price": 220,
 		"support": "Founder will call you if you have an issue and fix it with you.",
 		"features": [
 			"Resumable file uploads.",

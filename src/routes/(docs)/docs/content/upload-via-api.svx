@@ -1,0 +1,49 @@
+---
+title: 'Upload a file via API'
+description: 'Upload a file with the API directly.'
+order: 4
+prefix: 'guide'
+name: 'Upload via API'
+---
+
+### {title}
+{description}
+
+### Step by Step.
+
+- Create a formdata object.
+- Append the file as a buffer or from a multipart upload. 
+- Pass your API key to the *api-key* header
+- Response contains the URL to the file that you can store in your database.
+
+### Express.js example.
+
+```js
+// POST route for file upload
+app.post('/upload', async (req, res) => {
+  const file = req.file; // Assuming the file is sent as part of the request
+
+  // Create a new FormData object and append the file to it
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    // Make a POST request to the external API endpoint
+    const response = await fetch('https://uploadfast-server.fly.dev/upload', {
+      method: 'POST',
+      headers: {
+        'api-key': process.env.UPLOADFAST_KEY
+      },
+      body: formData
+    });
+
+    // Your uploaded file
+    const { url, file_name } = await response.json()
+
+    res.status(200).send('File uploaded successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+```

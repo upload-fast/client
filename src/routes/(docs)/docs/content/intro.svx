@@ -1,6 +1,7 @@
 ---
 title: 'Introducing UploadFast'
 description: 'Start using uploadfast in your app'
+order: 1
 ---
 
 # {title} 
@@ -15,44 +16,4 @@ So you can access it, download it, display it.. whatever.
 If you need an "advanced" solution with a bunch of uneccessary features, you can use cloudinary, aws S3 or cloudflare images.
 
 
-UploadFast helps save you time and let's you prototype fast by doing one thing well.
-
-
-
-#### Installation
-```powershell
-pnpm add @uploadfast/client
-```
-
-```powershell
-npm i @uploadfast/client
-```
-
-```powershell
-bun add @uploadfast/client
-```
-
-#### React
-Use uploadfast in your react app
-```jsx
-const Res = () => {
-    return <div>Yes daddy</div>
-}
-```
-
-#### Vue
-Use uploadfast in your vue app
-```jsx
-const Res = () => {
-    return <div>Yes daddy</div>
-}
-```
-
-#### Svelte
-Use uploadfast in your svelte app.
-This site is built with svelte btw
-```jsx
-const Res = () => {
-    return <div>Yes daddy</div>
-}
-```
+UploadFast helps you save time and prototype fast by doing one thing well.

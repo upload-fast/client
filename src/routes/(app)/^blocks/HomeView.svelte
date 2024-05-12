@@ -97,7 +97,7 @@
 		{/each}
 
 		<div class="mt-3 flex max-w-md flex-row items-center gap-4">
-			{#if apiKeys.length}
+			{#if apiKeys.length && !plan.paid}
 				<Button class="w-44" variant={'outline'}>Activate API keys</Button>
 			{/if}
 			<CreateApiKey>Create new API key</CreateApiKey>

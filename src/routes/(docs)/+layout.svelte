@@ -4,6 +4,10 @@
 	import type { PageData } from './docs/$types';
 
 	export let data: PageData;
+
+	const uploadRoutes = data.content.filter((item) => item.prefix === 'upload');
+	const deleteRoutes = data.content.filter((item) => item.prefix === 'delete');
+	const getStartedRoutes = data.content.filter((item) => !item.prefix);
 </script>
 
 <!-- Header, SearchBar, -->
@@ -17,7 +21,7 @@
 						class="-ml-0.5 mr-1 inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"
 						>fast</span
 					>
-					<span class="text-sm font-thin">docs</span>
+					<span class="mb-4 text-sm font-thin">docs</span>
 				</p>
 			</a>
 
@@ -27,11 +31,33 @@
 		</div>
 	</div>
 	<aside
-		class="inset-y-0 left-0 z-10 mt-[4.4rem] hidden w-[13rem] flex-col border-r bg-stone-800/50 sm:flex lg:fixed"
+		class="inset-y-0 left-0 z-10 mt-[4.4rem] hidden w-[13rem] flex-col border-r bg-stone-800/40 sm:flex lg:fixed"
 	>
-		<ul class="space-y-2 px-6 py-12">
+		<ul class="space-y-2 px-6 pb-6 pt-12">
 			<p class="text-xs font-bold uppercase text-primary-foreground">Get started</p>
-			{#each data.content as item}
+			{#each data.formatted['Get started'] as item}
+				<li>
+					<a href={item.url}>
+						{item.name}
+					</a>
+				</li>
+			{/each}
+		</ul>
+
+		<ul class="space-y-2 px-6 py-12">
+			<p class="text-xs font-bold uppercase text-primary-foreground">Guides</p>
+			{#each data.formatted.guide as item}
+				<li>
+					<a href={item.url}>
+						{item.name}
+					</a>
+				</li>
+			{/each}
+		</ul>
+
+		<ul class="space-y-2 px-6 py-6">
+			<p class="text-xs font-bold uppercase text-primary-foreground">reference</p>
+			{#each data.formatted.SDK as item}
 				<li>
 					<a href={item.url}>
 						{item.name}

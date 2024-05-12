@@ -6,7 +6,7 @@ export async function load({ params }) {
 		const res: any = await comps[`../content/${params.slug}.svx`]();
 
 		return {
-			content: res.default,
+			pageContent: res.default,
 			meta: res.metadata
 		};
 	} catch (e) {

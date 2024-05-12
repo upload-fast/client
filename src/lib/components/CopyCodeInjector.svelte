@@ -20,7 +20,7 @@
 				pre.appendChild(copyButton);
 			});
 			copyButton.style.position = 'absolute';
-			copyButton.style.top = '4px';
+			copyButton.style.top = '1em';
 			copyButton.style.right = '10px';
 			copyButton.style.backgroundColor = 'rgb(41 37 36 / 0.8)';
 			copyButton.style.color = '#ebdbb2';

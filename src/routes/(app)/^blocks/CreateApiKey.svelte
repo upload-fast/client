@@ -17,7 +17,7 @@
 </script>
 
 <form method="POST" action="?/createKey" use:enhance={submitForm}>
-	<Button type="submit">
+	<Button type="submit" id="new-key">
 		{#if loading}
 			<Circle class="mx-3 animate-spin" size={12} />
 		{/if}

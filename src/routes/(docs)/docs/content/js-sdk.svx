@@ -1,0 +1,22 @@
+---
+title: 'JS SDK'
+name: 'Javascript'
+prefix: 'SDK'
+order: 3
+---
+### {title}
+Conveniently upload files from your javascript apps.
+
+### Installation
+```powershell
+pnpm add @uploadfast/client
+```
+
+```powershell
+npm i @uploadfast/client
+```
+
+```powershell
+bun add @uploadfast/client
+```
+

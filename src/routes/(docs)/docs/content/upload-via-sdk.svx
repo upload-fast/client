@@ -1,0 +1,12 @@
+---
+title: 'Upload a file via SDK'
+description: 'Upload a file with the SDK'
+order: 5
+prefix: 'guide'
+name: 'Upload via SDK'
+---
+
+## {title}
+
+<script>import FrameworksCopy from '$lib/components/FrameworksCopy.svelte';</script>
+<FrameworksCopy />
