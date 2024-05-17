@@ -1,0 +1,8 @@
+---
+title: 'Next-js.'
+description: 'Upload a file from your Next.js App'
+order: 6
+prefix: 'guide'
+name: 'Next.js'
+---
+

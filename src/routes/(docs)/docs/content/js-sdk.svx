@@ -1,11 +1,11 @@
 ---
 title: 'JS SDK'
-name: 'Javascript'
+name: 'Javascript SDK'
 prefix: 'SDK'
 order: 3
 ---
 ### {title}
-Conveniently upload files from your javascript apps.
+Conveniently upload files from javascript apps.
 
 ### Installation
 ```powershell

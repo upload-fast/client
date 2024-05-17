@@ -1,13 +1,14 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
 	import { Progress } from '$lib/components/ui/progress';
-	import { getPercentOf, replaceCharacters } from '$lib/utils';
+	import { cn, getPercentOf, replaceCharacters } from '$lib/utils';
 	import { calcFileSizeInKB } from '$lib/utils';
 	import Copy from 'lucide-svelte/icons/copy';
 	import Link from './Link.svelte';
 	import { Plus, Trash2 } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button';
 	import CreateApiKey from './CreateApiKey.svelte';
+	import ActivateApIkey from './ActivateAPIkey.svelte';
 
 	export let apiKeys: any;
 
@@ -90,16 +91,17 @@
 					<Trash2 size={14} class="text-red-300" />
 				</span> -->
 
-				<span class=" rounded-xl bg-red-500/30 px-2 py-1 text-sm text-red-300"
-					>{key.active ? 'active' : 'inactive'}</span
+				<span
+					class={cn(
+						'rounded-xl px-2 py-1 text-sm ',
+						key.active ? 'bg-emerald-500/30 text-green-200' : 'bg-red-500/30 text-red-300'
+					)}>{key.active ? 'active' : 'inactive'}</span
 				>
 			</div>
 		{/each}
 
 		<div class="mt-3 flex max-w-md flex-row items-center gap-4">
-			{#if apiKeys.length && !plan.paid}
-				<Button class="w-44" variant={'outline'}>Activate API keys</Button>
-			{/if}
+			<ActivateApIkey visible={apiKeys.length && !plan.paid} />
 			<CreateApiKey>Create new API key</CreateApiKey>
 		</div>
 	</div>

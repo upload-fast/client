@@ -4,6 +4,7 @@ import type { Ufile } from './types';
 import { User } from '$lib/models/user';
 import { convertObjectIds } from '$lib/server/auth_utils/_auth';
 import { redirect } from '@sveltejs/kit';
+import { UploadFast } from '@uploadfast/client';
 
 export async function load({ locals }) {
 	// Get session

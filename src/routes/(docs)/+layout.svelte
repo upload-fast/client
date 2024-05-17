@@ -4,10 +4,6 @@
 	import type { PageData } from './docs/$types';
 
 	export let data: PageData;
-
-	const uploadRoutes = data.content.filter((item) => item.prefix === 'upload');
-	const deleteRoutes = data.content.filter((item) => item.prefix === 'delete');
-	const getStartedRoutes = data.content.filter((item) => !item.prefix);
 </script>
 
 <!-- Header, SearchBar, -->

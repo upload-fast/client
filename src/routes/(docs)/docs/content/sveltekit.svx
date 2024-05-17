@@ -1,0 +1,79 @@
+---
+title: 'Svelte-Kit'
+description: 'Upload a file from your Svelte Kit App'
+order: 5
+prefix: 'guide'
+name: 'Sveltekit'
+---
+
+## {title}
+**{description}**
+
+
+### Step 1
+- Create a server action at any chosen route.
+
+- Copy and paste this code  ( I stole most of it from [Okupter's ](https://www.okupter.com/blog/sveltekit-file-upload) blog )
+
+
+
+### Installation
+```powershell
+pnpm add @uploadfast/client
+```
+
+```powershell
+npm i @uploadfast/client
+```
+
+```powershell
+bun add @uploadfast/client
+```
+
+### `+page.ts`
+```js
+import { fail } from '@sveltejs/kit';
+import { createClient } from '@uploadfast/client'
+import { UPLOADFAST_API_KEY } from '$env/static/private';
+
+export const actions = {
+  // You can use a named action for tidiness.
+  upload: async ({ request }) => {
+    const formData = Object.fromEntries(await request.formData());
+    const fast = createClient
+
+    if (
+      !(formData.file as File).name ||
+      (formData.file as File).name === 'undefined'
+    ) {
+      return fail(400, {
+        error: true,
+        message: 'You must provide a file to upload'
+      });
+    }
+
+    const { file } = formData as { file: File };
+    const fast = createClient({apiKey: UPLOADFAST_API_KEY})
+
+    const fileData = await fast.upload(file)
+    const { url, file_name } = fileData[0]
+
+    // Store it in your database or something.
+  }
+};
+```
+
+### `+page.svelte`
+Your client code could look like this.
+
+```js
+<!-- src/routes/+page.svelte -->
+<form method="post" use:enhance enctype="multipart/form-data" action="?/upload">
+  <div class="group">
+    <label for="file">Upload yout profile picture</label>
+    <input type="file" id="file" name="file" />
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+```

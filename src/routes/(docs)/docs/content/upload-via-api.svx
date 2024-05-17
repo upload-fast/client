@@ -38,7 +38,12 @@ app.post('/upload', async (req, res) => {
     });
 
     // Your uploaded file
-    const { url, file_name } = await response.json()
+    const data = await response.json()
+    // Get data about the file
+    const {url, file_name} = data[0]
+
+    // Save to database
+    // ...
 
     res.status(200).send('File uploaded successfully');
   } catch (error) {

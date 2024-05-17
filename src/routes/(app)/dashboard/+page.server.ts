@@ -84,5 +84,9 @@ export const actions = {
 			return { error: true, payload: response.statusText };
 		}
 		return { error: false, payload: await response.json() };
+	},
+
+	activate: async ({ locals }) => {
+		redirect(303, 'https://upload-fast.lemonsqueezy.com/');
 	}
 };

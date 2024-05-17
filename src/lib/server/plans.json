@@ -1,31 +1,29 @@
 [
 	{
-		"name": "Tier 1",
+		"name": "Free Trial",
 		"storageCap": "500MB",
-		"description": "Lowest tier for testing / proof of concept, early development and non-existent traffic.",
-		"uploadsPerMonth": 200,
-		"price": 6,
-		"support": "Limited support via email."
+		"description": "API keys become invalid in a week. For testing and convincing your team",
+		"uploadsPerMonth": 50,
+		"price": "Free",
+		"support": "Very Limited support.",
+		"sizeLimit": "50MB"
+	},
+	{
+		"name": "Tier 1",
+		"storageCap": "10GB",
+		"description": "For testing / proof of concept, early development and infrequent file upload needs",
+		"uploadsPerMonth": 5000,
+		"price": "10 - once",
+		"support": "Enthusiastic support via email.",
+		"sizeLimit": "300MB"
 	},
 	{
 		"name": "Tier 2",
 		"storageCap": "50GB",
-		"description": "For production apps with low to medium file upload needs.",
-		"uploadsPerMonth": 5000,
-		"price": 48,
+		"description": "For production apps with frequent file upload needs.",
+		"uploadsPerMonth": 10000,
+		"price": "17 /mo",
+		"sizeLimit": "4.5GB",
 		"support": "Founder responds to your emails within 1 hour."
-	},
-	{
-		"name": "Tier 3",
-		"storageCap": "100GB",
-		"description": "If your users are doing lot's of (large) file uploads then this is the plan for you!",
-		"uploadsPerMonth": 20000,
-		"price": 220,
-		"support": "Founder will call you if you have an issue and fix it with you.",
-		"features": [
-			"Resumable file uploads.",
-			"Export all files - (Coming soon)",
-			"Migrate from Cloudinary or UploadFast - (Coming soon)"
-		]
 	}
 ]
