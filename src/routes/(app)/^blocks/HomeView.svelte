@@ -55,7 +55,7 @@
 	<Card.Root class="max-w-sm">
 		<Card.Header class="pb-2">
 			<Card.Description>Files Stored</Card.Description>
-			<Card.Title class="text-4xl">{count.total}</Card.Title>
+			<Card.Title class="text-4xl">{count.total} / {plan.uploadCap}</Card.Title>
 		</Card.Header>
 		<Card.Content>
 			<div class="text-xs text-muted-foreground">
@@ -63,7 +63,7 @@
 			</div>
 		</Card.Content>
 		<Card.Footer>
-			<Progress value={100} aria-label="25% increase" />
+			<Progress value={(count.total / plan.uploadCap) * 100} aria-label="25% increase" />
 		</Card.Footer>
 	</Card.Root>
 </section>
