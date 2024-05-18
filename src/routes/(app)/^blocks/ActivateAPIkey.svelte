@@ -1,21 +1,16 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { openLemonSqueezyUrl } from '$lib/lemon';
+	import { getLemonSqueezy, openLemonSqueezyUrl, respondToCheckoutEvent } from '$lib/lemon';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { Circle } from 'lucide-svelte';
+	import { onMount } from 'svelte';
 
 	export let visible: boolean;
 
 	let loading: boolean;
-	const submitForm: SubmitFunction = (input) => {
-		loading = true;
-		return async ({ update }) => {
-			loading = false;
-			await update({ reset: false });
-		};
-	};
 
 	function purchasePlan() {
+		loading = true;
 		const itemId = 269034;
 		const isDarkMode =
 			window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -30,7 +25,15 @@
 			}).toString();
 
 		openLemonSqueezyUrl(checkoutUrl);
+		loading = false;
 	}
+
+	function handleCheckout(data: any) {
+		alert(JSON.stringify(data));
+	}
+	onMount(() => {
+		respondToCheckoutEvent(handleCheckout);
+	});
 </script>
 
 {#if visible}

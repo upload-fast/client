@@ -12,7 +12,19 @@ export async function openLemonSqueezyUrl(s: string) {
 	return LemonSqueezy.Url.Open(s);
 }
 
-async function getLemonSqueezy() {
+export async function respondToCheckoutEvent(callback: (data: any) => void) {
+	const LemonSqueezy = await getLemonSqueezy();
+
+	LemonSqueezy.Setup({
+		eventHandler: (ctx: { event: string; data: any }) => {
+			if (ctx.event == 'Checkout.Success') {
+				callback(ctx.data);
+			}
+		}
+	});
+}
+
+export async function getLemonSqueezy() {
 	if (!windowWithLemonSqueezy?.LemonSqueezy) {
 		await loadAndInitialize();
 	}
