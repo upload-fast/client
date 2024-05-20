@@ -14,15 +14,7 @@
 		const itemId = 269034;
 		const isDarkMode =
 			window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-		const checkoutUrl =
-			`https://upload-fast.lemonsqueezy.com/buy/4b700180-1998-4a87-8e46-bad3e75b1fe7?` +
-			new URLSearchParams({
-				embed: '1',
-				dark: '1'
-				// "checkout[email]": $user.email,
-				// "checkout[name]": $user.displayName,
-				// "checkout[custom][user_id]": $user.uid,
-			}).toString();
+		const checkoutUrl = `https://upload-fast.lemonsqueezy.com/buy/d526382a-67e3-457b-8e36-ad3a8b56062c`;
 
 		openLemonSqueezyUrl(checkoutUrl);
 		loading = false;
@@ -37,12 +29,10 @@
 </script>
 
 {#if visible}
-	<!-- <form method="POST" action="?/activate"> -->
 	<Button type="submit" id="activate" variant={'outline'} on:click={purchasePlan}>
 		{#if loading}
 			<Circle class="mx-3 animate-spin" size={12} />
 		{/if}
 		<slot>Activate API key</slot>
 	</Button>
-	<!-- </form> -->
 {/if}
