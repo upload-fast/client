@@ -20,7 +20,7 @@ export async function load({ locals }) {
 	// Acess locals._user! Completely type safe
 	let user = locals._user;
 
-	const files = await UFile.find({ plan_id: user?.plan?._id });
+	const files = await UFile.find({ plan_id: user?.plan?._id }).limit(10);
 
 	const serializableFiles = files.map((item) => {
 		const res = item.toObject();
@@ -31,7 +31,3 @@ export async function load({ locals }) {
 		files: serializableFiles
 	};
 }
-
-export const actions = {
-	submitFile: async () => {}
-};

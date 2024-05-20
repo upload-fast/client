@@ -9,9 +9,11 @@
 	export let data: PageData;
 
 	let fileInput: HTMLInputElement;
+	let uploadForm: HTMLFormElement;
 
-	let showModal = false;
+	$: showModal = false;
 	let PickedFile: File | null = null;
+	let loading = false;
 
 	function handleClick() {
 		fileInput.click();
@@ -22,6 +24,30 @@
 		const file = event?.target?.files[0];
 		PickedFile = file;
 		showModal = true;
+	}
+
+	function closeModal() {
+		showModal = false;
+	}
+
+	async function appendFileandUpload(event: Event) {
+		const formData = new FormData();
+		formData.append('file', PickedFile!);
+
+		const request = new Request('/dashboard/files/upload', {
+			method: 'POST',
+			body: formData
+		});
+
+		try {
+			loading = true;
+			const response = await fetch(request);
+			location.reload();
+		} catch {
+			alert('Upload failed');
+		} finally {
+			loading = false;
+		}
 	}
 </script>
 
@@ -59,14 +85,21 @@
 		{#if PickedFile}
 			<p>Name: {PickedFile.name}</p>
 			<p>Type: {PickedFile.type}</p>
-			<p>Size: {PickedFile.size} bytes</p>
+			<p>Size: {Math.floor(PickedFile.size / 1024)} KB</p>
 			{#if PickedFile.type.includes('image/')}
-				<img src={URL.createObjectURL(PickedFile)} alt="File preview" class="mx-auto h-36 w-36" />
+				<img
+					src={URL.createObjectURL(PickedFile)}
+					alt="File preview"
+					class="mx-auto my-3 h-36 w-36 object-contain"
+				/>
 			{/if}
 		{/if}
-	</div>
 
-	<form>
-		<Button class="mt-4">Upload file</Button>
-	</form>
+		<Button
+			class="mx-auto mt-4 w-full"
+			disabled={loading}
+			on:click={async (event) => await appendFileandUpload(event)}
+			>Upload{loading ? 'ing' : ''} file</Button
+		>
+	</div>
 </MiscModal>
