@@ -1,7 +1,7 @@
 ---
 title: 'Upload a file via API'
 description: 'Upload a file with the API directly.'
-order: 4
+order: 3
 prefix: 'guide'
 name: 'Upload via API'
 ---

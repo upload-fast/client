@@ -17,7 +17,7 @@
 </svelte:head>
 
 <article
-	class="prose px-6 text-lg prose-headings:text-gray-200 prose-h1:-mb-1 prose-h4:mt-16 prose-a:text-primary-foreground prose-strong:text-white/90 sm:px-3"
+	class="prose px-6 text-lg prose-headings:text-gray-200 prose-h1:-mb-1 prose-h4:mt-4 prose-a:text-primary-foreground prose-strong:text-white/90 sm:px-3"
 >
 	<!-- Remount CopyCodeInjector every on each render-->
 	{#key next}

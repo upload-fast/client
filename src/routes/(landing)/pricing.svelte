@@ -8,17 +8,12 @@
 	<div class="mx-auto mt-4 max-w-7xl px-6 pb-20 lg:px-8">
 		<div class="mx-auto max-w-4xl text-center">
 			<h1 class="text-lg font-semibold leading-7 text-emerald-200">Pricing</h1>
-			<p class="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-				Simple one-time and subscription tiers, no calculator needed.
+			<p class="mt-2 text-xl font-bold tracking-tight text-white md:text-4xl">
+				Get started for free
 			</p>
 		</div>
-		<p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-300">
-			We recommended starting with the one-time tier and then upgrading.
-		</p>
-		<br />
-		<p class="mx-auto max-w-2xl text-center text-lg leading-8 text-gray-300">
-			After signing up, activate your API key before your free trial ends to keep your access to the
-			service
+		<p class="mx-auto mt-4 max-w-2xl text-center text-lg leading-8 text-gray-300">
+			No subscription headache, thanks to Cloudflare. Upgrade to the paid plan later on.
 		</p>
 		<div
 			class="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3"

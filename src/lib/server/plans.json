@@ -2,20 +2,20 @@
 	{
 		"name": "Free Trial",
 		"storageCap": "500MB",
-		"description": "API keys become invalid in a week. For testing and convincing your team",
-		"uploadsPerMonth": 50,
+		"description": "API keys will be nuked in one week. Do not use in production.",
+		"uploadsPerMonth": 150,
 		"price": "Free",
 		"support": "Limited support.",
-		"sizeLimit": "50MB"
+		"sizeLimit": "25MB"
 	},
 	{
 		"name": "Tier 1",
 		"storageCap": "10GB",
-		"description": "For testing / proof of concept, early development and infrequent file upload needs",
+		"description": "For testing / proof of concept, and infrequent file uploads in production",
 		"uploadsPerMonth": 5000,
 		"price": "10 - once",
 		"support": "Enthusiastic support via email.",
-		"sizeLimit": "300MB"
+		"sizeLimit": "500MB"
 	},
 	{
 		"name": "Tier 2",

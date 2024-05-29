@@ -6,7 +6,7 @@ name: 'API keys'
 ---
 
 ## {description}
-## Obtaining an API Key
+#### Obtaining an API Key
 
 - Go to your uploadfast dashboard. 
 - Create an API key by clicking **[Add new key](/dashboard/#new-key)**.
