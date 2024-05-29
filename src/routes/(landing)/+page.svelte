@@ -13,7 +13,7 @@
 
 <div class="flex flex-row items-center justify-between px-8 py-2">
 	<div class="flex flex-row items-center">
-		<img src="/uploadfast.png" alt="logo" class="h-20 w-20 object-scale-down" />
+		<img src="/uploadfast.webp" alt="logo" class="h-20 w-20 object-scale-down" />
 		<p class="text-4xl font-bold">
 			upload <span
 				class="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"
