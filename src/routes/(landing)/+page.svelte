@@ -6,6 +6,11 @@
 	export let data: PageData;
 </script>
 
+<svelte:head>
+	<title>UploadFast - Ship file uploads in 15 minutes.</title>
+	<meta name="description" content="Start uploading files from your javascript app for free" />
+</svelte:head>
+
 <div class="flex flex-row items-center justify-between px-8 py-2">
 	<div class="flex flex-row items-center">
 		<img src="/uploadfast.png" alt="logo" class="h-20 w-20 object-scale-down" />

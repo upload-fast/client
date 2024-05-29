@@ -11,11 +11,7 @@
 
 	function purchasePlan() {
 		loading = true;
-		const itemId = 269034;
-		const isDarkMode =
-			window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 		const checkoutUrl = `https://upload-fast.lemonsqueezy.com/buy/d526382a-67e3-457b-8e36-ad3a8b56062c`;
-
 		openLemonSqueezyUrl(checkoutUrl);
 		loading = false;
 	}
@@ -23,6 +19,7 @@
 	function handleCheckout(data: any) {
 		alert(JSON.stringify(data));
 	}
+
 	onMount(() => {
 		respondToCheckoutEvent(handleCheckout);
 	});

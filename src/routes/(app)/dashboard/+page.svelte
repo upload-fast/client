@@ -17,6 +17,11 @@
 	}
 </script>
 
+<svelte:head>
+	<title>UploadFast Dashboard - Ship file uploads like a megachad.</title>
+	<meta name="description" content="Manage file uploads from your javascript app" />
+</svelte:head>
+
 <GithubAuthModal openIt={!Boolean(data.session)} />
 
 {#if Boolean(data?.user?.plan)}

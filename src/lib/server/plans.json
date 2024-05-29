@@ -5,7 +5,7 @@
 		"description": "API keys become invalid in a week. For testing and convincing your team",
 		"uploadsPerMonth": 50,
 		"price": "Free",
-		"support": "Very Limited support.",
+		"support": "Limited support.",
 		"sizeLimit": "50MB"
 	},
 	{
@@ -19,11 +19,11 @@
 	},
 	{
 		"name": "Tier 2",
-		"storageCap": "50GB",
+		"storageCap": "120GB (extendable)",
 		"description": "For production apps with frequent file upload needs.",
-		"uploadsPerMonth": 10000,
-		"price": "17 /mo",
+		"uploadsPerMonth": 100000,
+		"price": "12 /mo",
 		"sizeLimit": "4.5GB",
-		"support": "Founder responds to your emails within 1 hour."
+		"support": "Team is on hand to help you fix your issues."
 	}
 ]

@@ -50,17 +50,6 @@
 				</li>
 			{/each}
 		</ul>
-
-		<ul class="space-y-2 px-6 py-6">
-			<p class="text-xs font-bold uppercase text-primary-foreground">reference</p>
-			{#each data.formatted.SDK as item}
-				<li>
-					<a href={item.url}>
-						{item.name}
-					</a>
-				</li>
-			{/each}
-		</ul>
 	</aside>
 
 	<div class="pb-12 pt-24 sm:px-12 lg:ml-[14rem]">

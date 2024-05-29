@@ -10,7 +10,7 @@ name: 'Sveltekit'
 **{description}**
 
 
-### Step 1
+### Steps
 - Create a server action at any chosen route.
 
 - Copy and paste this code  ( I stole most of it from [Okupter's ](https://www.okupter.com/blog/sveltekit-file-upload) blog )
@@ -58,7 +58,7 @@ export const actions = {
     const fileData = await fast.upload(file)
     const { url, file_name } = fileData[0]
 
-    // Store it in your database or something.
+    // Store meta data in your database
   }
 };
 ```
@@ -67,7 +67,6 @@ export const actions = {
 Your client code could look like this.
 
 ```js
-<!-- src/routes/+page.svelte -->
 <form method="post" use:enhance enctype="multipart/form-data" action="?/upload">
   <div class="group">
     <label for="file">Upload yout profile picture</label>

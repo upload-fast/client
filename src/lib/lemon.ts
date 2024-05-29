@@ -17,7 +17,7 @@ export async function respondToCheckoutEvent(callback: (data: any) => void) {
 
 	LemonSqueezy.Setup({
 		eventHandler: (ctx: { event: string; data: any }) => {
-			if (ctx.event == 'Checkout.Success') {
+			if (ctx.event === 'Checkout.Success') {
 				callback(ctx.data);
 			}
 		}
