@@ -9,7 +9,7 @@
 <!-- Header, SearchBar, -->
 <section>
 	<div class="fixed top-0 z-10 h-fit w-full border-b-2 backdrop-blur-sm">
-		<div class="flex flex-row items-center justify-between px-8 py-4">
+		<div class="flex flex-row items-center justify-between px-4 py-4 sm:px-8">
 			<a class="flex flex-row items-center" href="/">
 				<img src="/uploadfast.png" alt="logo" class="h-8 w-8 object-scale-down" />
 				<p class="text-xl font-bold">

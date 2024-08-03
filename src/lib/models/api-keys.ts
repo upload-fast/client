@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 export const KeySchema = new Schema(
 	{
-		value: { type: String, unique: true, required: true },
+		value: { type: String },
 		user_id: { type: mongoose.SchemaTypes.ObjectId, index: true },
 		active: { type: Boolean, default: false }
 	},

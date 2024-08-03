@@ -31,3 +31,7 @@ export async function load({ locals }) {
 		files: serializableFiles
 	};
 }
+
+export const actions = {
+	
+}

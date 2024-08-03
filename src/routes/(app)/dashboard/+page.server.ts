@@ -61,6 +61,7 @@ export const actions = {
 				.exec()
 				.then();
 		} catch (e: any) {
+			console.log(e);
 			return fail(400, { error: true, payload: e.message });
 		}
 		redirect(307, '/dashboard/files');

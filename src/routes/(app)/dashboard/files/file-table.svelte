@@ -71,19 +71,23 @@
 			{/each}
 		</Table.Header>
 		<Table.Body {...$tableBodyAttrs}>
-			{#each $rows as row (row.id)}
-				<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-					<Table.Row {...rowAttrs} class="hover:bg-inherit">
-						{#each row.cells as cell (cell.id)}
-							<Subscribe attrs={cell.attrs()} let:attrs>
-								<Table.Cell {...attrs} class="pt-4">
-									<Render of={cell.render()} />
-								</Table.Cell>
-							</Subscribe>
-						{/each}
-					</Table.Row>
-				</Subscribe>
-			{/each}
+			{#if $rows.length}
+				{#each $rows as row (row.id)}
+					<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
+						<Table.Row {...rowAttrs} class="hover:bg-inherit">
+							{#each row.cells as cell (cell.id)}
+								<Subscribe attrs={cell.attrs()} let:attrs>
+									<Table.Cell {...attrs} class="pt-4">
+										<Render of={cell.render()} />
+									</Table.Cell>
+								</Subscribe>
+							{/each}
+						</Table.Row>
+					</Subscribe>
+				{/each}
+			{:else}
+				<div class="mx-4 my-8 w-full text-lg font-semibold">No files uploaded yet.</div>
+			{/if}
 		</Table.Body>
 	</Table.Root>
 </div>

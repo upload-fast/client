@@ -4,12 +4,11 @@
 	import type { PageData } from './$types';
 	import FileTable from './file-table.svelte';
 	import MiscModal from '$lib/components/MiscModal.svelte';
-	import type { EventHandler } from 'svelte/elements';
+	import { toast } from 'svelte-sonner';
 
 	export let data: PageData;
 
 	let fileInput: HTMLInputElement;
-	let uploadForm: HTMLFormElement;
 
 	$: showModal = false;
 	let PickedFile: File | null = null;
@@ -26,10 +25,6 @@
 		showModal = true;
 	}
 
-	function closeModal() {
-		showModal = false;
-	}
-
 	async function appendFileandUpload(event: Event) {
 		const formData = new FormData();
 		formData.append('file', PickedFile!);
@@ -42,9 +37,15 @@
 		try {
 			loading = true;
 			const response = await fetch(request);
-			location.reload();
+
+			if (response.ok) {
+				location.reload();
+			} else {
+				loading = false;
+				toast.error('Upload failed, try again');
+			}
 		} catch {
-			alert('Upload failed');
+			toast.error('Upload failed.');
 		} finally {
 			loading = false;
 		}
@@ -56,10 +57,10 @@
 		<h2 class="ml-1.5 text-xl font-[550] text-primary-foreground">Your Uploads</h2>
 
 		<Button
-			class="align-center text-md order-2 inline-flex gap-3 active:scale-90"
+			class="align-center text-md order-2 inline-flex gap-3 bg-emerald-800 text-emerald-100 duration-150 active:scale-95"
 			on:click={handleClick}
 		>
-			Add new file <PlusCircle class="text-primary-foreground" size={14} />
+			Upload new file <PlusCircle class="text-primary-foreground" size={14} />
 		</Button>
 
 		<!--Bind the file input to a variable so we can imperatively click it-->
@@ -99,7 +100,7 @@
 			class="mx-auto mt-4 w-full"
 			disabled={loading}
 			on:click={async (event) => await appendFileandUpload(event)}
-			>Upload{loading ? 'ing' : ''} file</Button
+			>Upload{loading ? 'ing...' : ''}</Button
 		>
 	</div>
 </MiscModal>

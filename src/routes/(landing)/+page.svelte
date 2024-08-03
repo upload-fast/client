@@ -2,6 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import type { PageData } from './$types';
 	import Pricing from './pricing.svelte';
+	import { buttonVariants } from '$lib/components/ui/button';
 
 	export let data: PageData;
 </script>
@@ -11,10 +12,10 @@
 	<meta name="description" content="Start uploading files from your javascript app for free" />
 </svelte:head>
 
-<div class="flex flex-row items-center justify-between px-8 py-2">
-	<div class="flex flex-row items-center">
-		<img src="/uploadfast.webp" alt="logo" class="h-20 w-20 object-scale-down" />
-		<p class="text-4xl font-bold">
+<div class="flex flex-row items-center justify-between px-4 py-2 md:px-8">
+	<div class="flex flex-row items-center py-3 sm:p-0">
+		<img src="/uploadfast.webp" alt="logo" class="h-16 w-16 object-scale-down sm:h-20 sm:w-20" />
+		<p class="hidden font-bold md:block md:text-4xl">
 			upload <span
 				class="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"
 				>fast</span
@@ -22,12 +23,12 @@
 		</p>
 	</div>
 
-	<Button class="hidden rounded-sm bg-teal-800 text-white sm:block">
-		<a href="/dashboard">Go to dashboard</a>
-	</Button>
+	<a href="/dashboard" class={buttonVariants({ variant: 'secondary', class: 'hidden md:block' })}>
+		Go to Dashboard
+	</a>
 </div>
 
-<div class="mx-auto my-16 flex flex-col items-center px-2 sm:px-0 md:max-w-xl">
+<div class="mx-auto my-6 flex flex-col items-center px-2 sm:px-0 md:my-16 md:max-w-xl">
 	<h1
 		class="text-wrap-balance text-center text-4xl font-bold !leading-relaxed sm:text-5xl md:text-6xl lg:text-7xl"
 	>
@@ -47,8 +48,10 @@
 		<Button class="mx-auto text-lg text-white/90" size="lg" variant="outline" href="/docs/intro"
 			>Read the docs</Button
 		>
-		<Button class="mx-auto bg-pink-500 text-lg text-white/90" size="lg" href="/dashboard"
-			>Dive straight in🚀</Button
+		<Button
+			class="mx-auto bg-pink-500 text-lg text-white/90 opacity-0 sm:opacity-100"
+			size="lg"
+			href="/dashboard">Dive straight in🚀</Button
 		>
 	</div>
 </div>

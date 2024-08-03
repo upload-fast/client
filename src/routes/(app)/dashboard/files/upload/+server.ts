@@ -13,7 +13,7 @@ export async function POST({ request }) {
 			method: 'POST',
 			body: forml,
 			headers: {
-				'api-key': UPLOADFAST_API_KEY
+				'api-key': 'ufl_3nolirydf6zybr0f9npu'
 			}
 		};
 		const response = await fetch('https://uploadfast-server.fly.dev/upload', requestOptions);

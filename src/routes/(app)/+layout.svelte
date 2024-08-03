@@ -5,7 +5,7 @@
 	export let data: PageData;
 </script>
 
-<main class="flex min-h-screen w-full flex-col bg-muted/40 p-0">
+<main class="hidden min-h-screen w-full flex-col bg-muted/40 p-0 md:flex">
 	<Sidebar />
 	<section class="ml-28 py-6">
 		<Header
@@ -15,3 +15,9 @@
 		<slot />
 	</section>
 </main>
+
+<section class="flex min-h-screen flex-row items-center justify-center p-6 text-center md:hidden">
+	<p class="text-balance w-[88%] text-xl font-semibold">
+		Access this page on a larger screen to manage your files.
+	</p>
+</section>

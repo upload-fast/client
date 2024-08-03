@@ -4,7 +4,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import Clipboard from 'lucide-svelte/icons/clipboard-check';
 	import { toast } from 'svelte-sonner';
-	import { DoorOpen } from 'lucide-svelte';
+	import { ExternalLink, Trash } from 'lucide-svelte';
 
 	export let id: string;
 
@@ -21,16 +21,19 @@
 			<Ellipsis class="h-4 w-4" />
 		</Button>
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content class="bg-primary/30 py-2.5 backdrop-blur-md">
-		<DropdownMenu.Group class="flex flex-col gap-1">
-			<DropdownMenu.Item on:click={copyUrl} class="inline-flex gap-2 px-4">
-				Copy Image Url
-				<Clipboard size={12} />
+	<DropdownMenu.Content class="bg-black/40 p-4 backdrop-blur-md">
+		<DropdownMenu.Group class="flex flex-row flex-nowrap gap-4">
+			<DropdownMenu.Item on:click={copyUrl} class="inline-flex gap-2 p-2">
+				<Clipboard size={16} />
 			</DropdownMenu.Item>
-			<DropdownMenu.Separator class="my-1" />
-			<DropdownMenu.Item class="inline-flex gap-2 px-4">
-				<a href={id} target="_blank" class="text-sm"> Open in browser </a>
-				<DoorOpen size={12} />
+			<DropdownMenu.Item class="inline-flex p-2">
+				<a href={id} target="_blank" class="text-sm">
+					<ExternalLink size={16} />
+				</a>
+			</DropdownMenu.Item>
+
+			<DropdownMenu.Item class="inline-flex p-2">
+				<Trash size={16} class="text-red-400" />
 			</DropdownMenu.Item>
 		</DropdownMenu.Group>
 	</DropdownMenu.Content>

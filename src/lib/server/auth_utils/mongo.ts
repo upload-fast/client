@@ -4,7 +4,7 @@ import { mongo } from 'mongoose';
 import mongoose from 'mongoose';
 
 if (!MONGODB_URI) {
-	throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+	throw new Error('Invalid or Missing environment variable: "MONGODB_URI"');
 }
 
 const uri: string = MONGODB_URI;
