@@ -1,17 +1,23 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { getLemonSqueezy, openLemonSqueezyUrl, respondToCheckoutEvent } from '$lib/lemon';
-	import type { SubmitFunction } from '@sveltejs/kit';
+	import { openLemonSqueezyUrl, respondToCheckoutEvent } from '$lib/lemon';
 	import { Circle } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import type { UserType } from '../../../app';
 
 	export let visible: boolean;
-
+	export let name: UserType['name'];
+	export let email: UserType['email'];
+	export let userId: UserType['_id'];
 	let loading: boolean;
 
 	function purchasePlan() {
 		loading = true;
-		const checkoutUrl = `https://upload-fast.lemonsqueezy.com/buy/d526382a-67e3-457b-8e36-ad3a8b56062c`;
+		const checkoutUrl = `https://upload-fast.lemonsqueezy.com/buy/fcdd9d62-446c-462c-b77c-7f9387daff6e
+		?checkout[email]=${email}
+		&checkout[name]=${name}
+		&checkout[custom][userId]=${userId}
+		`;
 		openLemonSqueezyUrl(checkoutUrl);
 		loading = false;
 	}
@@ -30,6 +36,6 @@
 		{#if loading}
 			<Circle class="mx-3 animate-spin" size={12} />
 		{/if}
-		<slot>Activate API key</slot>
+		<slot>Activate API keys</slot>
 	</Button>
 {/if}

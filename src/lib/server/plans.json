@@ -2,26 +2,26 @@
 	{
 		"name": "Free Trial",
 		"storageCap": "500MB",
-		"description": "API keys will be nuked in one week. Do not use in production.",
+		"description": "For prototyping new startup ideas where you need to upload images.",
 		"uploadsPerMonth": 150,
-		"price": "Free",
+		"price": "$4 - once",
 		"support": "Limited support.",
 		"sizeLimit": "25MB"
 	},
 	{
 		"name": "Tier 1",
 		"storageCap": "10GB",
-		"description": "For testing / proof of concept, and infrequent file uploads in production",
+		"description": "For apps with infrequent image uploads needs in production",
 		"uploadsPerMonth": 5000,
-		"price": "10 - once",
+		"price": "7 /mo",
 		"support": "Enthusiastic support via email.",
 		"sizeLimit": "500MB"
 	},
 	{
 		"name": "Tier 2",
 		"storageCap": "120GB (extendable)",
-		"description": "For production apps with frequent file upload needs.",
-		"uploadsPerMonth": 100000,
+		"description": "For production apps with frequent image upload and storage needs.",
+		"uploadsPerMonth": 1000000,
 		"price": "12 /mo",
 		"sizeLimit": "4.5GB",
 		"support": "Team is on hand to help you fix your issues."

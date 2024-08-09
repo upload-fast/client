@@ -17,7 +17,9 @@ async function setUserContext({ event, resolve }) {
 
 	event.locals._user = userFromDb;
 
-	return resolve(event);
+	const response = await resolve(event);
+
+	return response;
 }
 
 export const handle: Handle = sequence(authHandle, setUserContext);

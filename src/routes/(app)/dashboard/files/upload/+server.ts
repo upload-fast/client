@@ -13,7 +13,7 @@ export async function POST({ request }) {
 			method: 'POST',
 			body: forml,
 			headers: {
-				'api-key': 'ufl_3nolirydf6zybr0f9npu'
+				'api-key': UPLOADFAST_API_KEY
 			}
 		};
 		const response = await fetch('https://uploadfast-server.fly.dev/upload', requestOptions);
@@ -21,7 +21,6 @@ export async function POST({ request }) {
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
-		console.log(JSON.stringify(uploadResponse));
 		return new Response(uploadResponse);
 	} catch (e) {
 		console.log(e);

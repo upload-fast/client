@@ -9,6 +9,7 @@
 	export let data: PageData;
 
 	let fileInput: HTMLInputElement;
+	let img: HTMLImageElement;
 
 	$: showModal = false;
 	let PickedFile: File | null = null;
@@ -17,12 +18,18 @@
 	function handleClick() {
 		fileInput.click();
 	}
+	
 
 	function handleFileChange(event: Event) {
 		//@ts-ignore
 		const file = event?.target?.files[0];
 		PickedFile = file;
 		showModal = true;
+
+		// Revoke object url to free resources.
+		img.onload = () => {
+			URL.revokeObjectURL(img.src);
+		};
 	}
 
 	async function appendFileandUpload(event: Event) {
@@ -92,6 +99,7 @@
 					src={URL.createObjectURL(PickedFile)}
 					alt="File preview"
 					class="mx-auto my-3 h-36 w-36 object-contain"
+					bind:this={img}
 				/>
 			{/if}
 		{/if}

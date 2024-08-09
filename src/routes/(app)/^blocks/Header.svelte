@@ -13,7 +13,7 @@
 		<DropdownMenu.Trigger>
 			<Avatar.Root class="h-8 w-8 cursor-pointer border-2 border-primary-foreground">
 				<Avatar.Image src={imageUrl} alt={username} />
-				<Avatar.Fallback>{username.slice(0, 2)}</Avatar.Fallback>
+				<Avatar.Fallback>{username.slice(0, 2).toUpperCase()}</Avatar.Fallback>
 			</Avatar.Root>
 		</DropdownMenu.Trigger>
 

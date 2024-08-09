@@ -4,7 +4,7 @@ import type { User } from '$lib/models/user';
 import type { Document, ObjectId } from 'mongoose';
 import type { Hanning } from './hooks.server';
 
-type User = {
+export type UserType = {
 	name: string;
 	_id: string | ObjectId;
 	email: string;
@@ -18,6 +18,8 @@ type User = {
 		updatedAt: NativeDate;
 		storageUsed: number;
 		storageCap: number;
+		uploadCap: number;
+		paid: boolean;
 	};
 };
 

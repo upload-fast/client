@@ -1,14 +1,15 @@
 <script lang="ts">
-	//
 	import GithubAuthModal from '../^blocks/GithubAuthModal.svelte';
 	import CreateProject from '../^blocks/CreateProject.svelte';
 	import { Toaster, toast } from 'svelte-sonner';
 	import type { PageData, ActionData } from './$types';
 	import HomeView from '../^blocks/HomeView.svelte';
-	import { page } from '$app/stores';
-	import { replaceCharacters } from '$lib/utils';
 
 	export let data: PageData;
+
+	const { user } = data;
+
+	const userData = { name: user.name, email: user.email, _id: user._id };
 
 	export let form: ActionData;
 
@@ -18,7 +19,7 @@
 </script>
 
 <svelte:head>
-	<title>UploadFast Dashboard - Ship file uploads like a megachad.</title>
+	<title>UploadFast Dashboard - Ship image uploads in half the time, with half the effort.</title>
 	<meta name="description" content="Manage file uploads from your javascript app" />
 </svelte:head>
 
@@ -26,7 +27,12 @@
 
 {#if Boolean(data?.user?.plan)}
 	<p>Welcome back {data.user?.name}</p>
-	<HomeView plan={data?.user?.plan || null} count={data.fileCount} apiKeys={data.apiKeys} />
+	<HomeView
+		plan={data?.user?.plan || null}
+		count={data.fileCount}
+		apiKeys={data.apiKeys}
+		{userData}
+	/>
 {:else}
 	<CreateProject />
 {/if}

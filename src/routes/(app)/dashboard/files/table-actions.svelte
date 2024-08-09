@@ -4,7 +4,8 @@
 	import { Button } from '$lib/components/ui/button';
 	import Clipboard from 'lucide-svelte/icons/clipboard-check';
 	import { toast } from 'svelte-sonner';
-	import { ExternalLink, Trash } from 'lucide-svelte';
+	import Trash from 'lucide-svelte/icons/trash';
+	import ExternalLink from 'lucide-svelte/icons/external-link';
 
 	export let id: string;
 

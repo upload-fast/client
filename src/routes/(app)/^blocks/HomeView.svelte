@@ -9,10 +9,13 @@
 	import { Button } from '$lib/components/ui/button';
 	import CreateApiKey from './CreateApiKey.svelte';
 	import ActivateApIkey from './ActivateAPIkey.svelte';
+	import type { UserType } from '../../../app';
 
 	export let apiKeys: any;
 
-	export let plan: any;
+	export let plan: UserType['plan'];
+
+	export let userData: Pick<UserType, 'name' | 'email' | '_id'>;
 
 	export let count: { total: number; thisWeek: number };
 
@@ -101,7 +104,12 @@
 		{/each}
 
 		<div class="mt-3 flex max-w-md flex-row items-center gap-4">
-			<ActivateApIkey visible={apiKeys.length && !plan.paid} />
+			<ActivateApIkey
+				visible={apiKeys.length && !plan.paid}
+				name={userData.name}
+				email={userData.email}
+				userId={userData._id}
+			/>
 			<CreateApiKey>Create new API key</CreateApiKey>
 		</div>
 	</div>
