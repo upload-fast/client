@@ -21,7 +21,7 @@
 		"name": "Tier 2",
 		"storageCap": "120GB (extendable)",
 		"description": "For production apps with frequent image upload and storage needs.",
-		"uploadsPerMonth": 1000000,
+		"uploadsPerMonth": 100000,
 		"price": "12 /mo",
 		"sizeLimit": "4.5GB",
 		"support": "Team is on hand to help you fix your issues."

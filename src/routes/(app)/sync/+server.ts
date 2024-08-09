@@ -2,6 +2,7 @@ import { WEBHOOK_SECRET } from '$env/static/private';
 import crypto from 'crypto';
 import { User } from '$lib/models/user.js';
 import { Key } from '$lib/models/api-keys.js';
+import type { PlanModel, planSchema } from '$lib/models/plan.js';
 
 async function buffer(readable: any) {
 	const chunks = [];
@@ -38,12 +39,14 @@ export interface ResBody {
 			id: string;
 			attributes: {
 				identifier: string;
+				status: string;
 				variant_name: string;
+				card_last_four: string;
 				first_order_item: {
 					variant_name: string;
 					test_mode: boolean;
 				};
-				urls?: {
+				urls: {
 					update_payment_method?: string;
 					customer_portal?: string;
 				};
@@ -96,25 +99,54 @@ export async function POST({ request }) {
 				userToUpdate!.plan!.plan_type =
 					payload['data']['attributes']['variant_name'] ?? userToUpdate!.plan!.plan_type;
 
-				userToUpdate.updateOne({}, { $set: { payment_meta: payload['data']['attributes'] ?? [] } });
 				await userToUpdate?.save();
 			}
 		}
 
-		case 'subscription_payment_success': {
+		case 'subscription_updated': {
+			const plan_type = payload['data']['attributes']['variant_name'] as
+				| 'Trial'
+				| 'Tier 1'
+				| 'Tier 2';
+
+			const customer_portal_url = payload['data']['attributes']['urls']['customer_portal']!;
+
+			// The only event that matter
+			const sub_status = payload['data']['attributes']['status'] as
+				| 'on_trial'
+				| 'active'
+				| 'expired';
+
 			if (userToUpdate) {
-				userToUpdate.updateOne({}, { $set: { payment_meta: payload['data']['attributes'] ?? [] } });
+				const plan_updates = { customer_portal_url, sub_status, plan_type } as any;
+				switch (plan_type) {
+					case 'Tier 1': {
+						plan_updates['storageCap'] = 10485760;
+						plan_updates['uploadCap'] = 5000;
+					}
+					case 'Tier 2': {
+						plan_updates['storageCap'] = 125829120;
+						plan_updates['uploadCap'] = 100000;
+					}
+				}
+
+				switch (sub_status) {
+					case 'on_trial':
+					case 'active': {
+						plan_updates['paid'] = true;
+						await Key.updateMany({ user_id: userId }, { $set: { active: true } });
+					}
+
+					case 'expired': {
+						plan_updates['paid'] = false;
+						await Key.updateMany({ user_id: userId }, { $set: { active: false } });
+					}
+				}
+
+				Object.assign(userToUpdate!.plan!, plan_updates);
+
+				await userToUpdate.save();
 			}
-
-			await Key.updateMany({ user_id: userId }, { $set: { active: true } });
-		}
-
-		case 'subscription_expired': {
-			if (userToUpdate) {
-				userToUpdate!.plan!.paid = false;
-			}
-
-			await Key.updateMany({ user_id: userId }, { $set: { active: false } });
 		}
 	}
 
