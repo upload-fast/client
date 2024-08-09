@@ -74,3 +74,21 @@ export function calcFileSizeInKB(size: number) {
 export function getPercentOf(values: { v1: number; v2: number }) {
 	return Number(((values.v1 / values.v2) * 100).toFixed(2));
 }
+
+export function generateStorageCapString({
+	storageCap,
+	storageUsed
+}: {
+	storageCap: number;
+	storageUsed: number;
+}) {
+	if (storageCap > 1048576) {
+		const fileSizeInGb = storageCap / 1048576;
+
+		return `${calcFileSizeInKB(storageUsed)} MB / ${fileSizeInGb.toLocaleString()} GB`;
+	}
+
+	return `${calcFileSizeInKB(storageUsed)} / ${calcFileSizeInKB(storageCap)
+		.toFixed()
+		.toLocaleString()} MB`;
+}

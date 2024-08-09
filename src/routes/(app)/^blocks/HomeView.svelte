@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
 	import { Progress } from '$lib/components/ui/progress';
-	import { cn, getPercentOf, replaceCharacters } from '$lib/utils';
+	import { cn, generateStorageCapString, getPercentOf, replaceCharacters } from '$lib/utils';
 	import { calcFileSizeInKB } from '$lib/utils';
 	import Copy from 'lucide-svelte/icons/copy';
 	import Link from './Link.svelte';
@@ -14,10 +14,6 @@
 	export let apiKeys: any;
 
 	export let plan: UserType['plan'];
-
-	const uploadCapString = `${calcFileSizeInKB(
-		plan?.storageUsed
-	)} / ${plan?.uploadCap.toLocaleString()} ${plan?.storageCap > 1048576 ? 'GB' : 'MB'}`;
 
 	export let userData: Pick<UserType, 'name' | 'email' | '_id'>;
 
@@ -47,7 +43,12 @@
 	<Card.Root class="max-w-sm">
 		<Card.Header class="pb-2">
 			<Card.Description>File Storage Level</Card.Description>
-			<Card.Title class="text-4xl">{uploadCapString}</Card.Title>
+			<Card.Title class="text-4xl"
+				>{generateStorageCapString({
+					storageCap: plan.storageCap,
+					storageUsed: plan.storageUsed
+				})}<small class="font-base ml-2 text-xs text-green-100/80">max</small></Card.Title
+			>
 		</Card.Header>
 		<Card.Content>
 			<div class="text-xs text-muted-foreground">+{percentUsed}% of total</div>
@@ -60,7 +61,10 @@
 	<Card.Root class="max-w-sm">
 		<Card.Header class="pb-2">
 			<Card.Description>Files Stored</Card.Description>
-			<Card.Title class="text-4xl">{count.total} / {plan.uploadCap}</Card.Title>
+			<Card.Title class="text-4xl">
+				{count.total} / {plan.uploadCap}
+				<small class="ml-0.5 text-xs font-thin text-green-100/80">max</small>
+			</Card.Title>
 		</Card.Header>
 		<Card.Content>
 			<div class="text-xs text-muted-foreground">

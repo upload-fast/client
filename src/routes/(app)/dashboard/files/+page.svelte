@@ -53,6 +53,7 @@
 
 			if (response.ok) {
 				toast.success('Uploaded successfully!');
+				showModal = false;
 				location.reload();
 			} else {
 				loading = false;
