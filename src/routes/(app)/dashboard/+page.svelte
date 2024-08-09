@@ -7,9 +7,11 @@
 
 	export let data: PageData;
 
-	const { user } = data;
-
-	const userData = { name: user.name || '', email: user.email || '', _id: user._id || '' };
+	const userData = {
+		name: data?.user?.name,
+		email: data?.user?.email,
+		_id: data?.user?._id
+	};
 
 	export let form: ActionData;
 
