@@ -75,7 +75,7 @@ export async function POST({ request }) {
 	const userId = payload['meta']['custom_data']['userId'];
 	const eventName = payload['meta']['event_name'];
 
-	const userToUpdate = await User.findById(userId);
+	const userToUpdate = await User.findByIdAndUpdate(userId);
 	const keys = await Key.find({ user_id: userId });
 
 	switch (eventName) {

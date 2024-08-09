@@ -5,6 +5,7 @@
 	import type { PageData, ActionData } from './$types';
 	import HomeView from '../^blocks/HomeView.svelte';
 	import { setUserContext, userContext } from '$lib/context';
+	import { onMount } from 'svelte';
 
 	export let data: PageData;
 
@@ -14,7 +15,9 @@
 		_id: data?.user?._id as string
 	};
 
-	setUserContext({ ...userData, apiKeys: data?.apiKeys || [] });
+	onMount(() => {
+		setUserContext({ ...userData, apiKeys: data?.apiKeys || [] });
+	});
 
 	export let form: ActionData;
 

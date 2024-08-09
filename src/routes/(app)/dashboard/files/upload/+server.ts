@@ -1,21 +1,19 @@
 import { UPLOADFAST_API_KEY } from '$env/static/private';
 
 export async function POST({ request }) {
-	const formData = Object.fromEntries(await request.formData());
-
-	const UPLOAD_KEY = request.headers.get('uf-api-key');
-
-	const { file } = formData as { file: File };
-
-	const forml = new FormData();
-	forml.append('file', file);
+	const formData = await request.formData();
 
 	try {
+		const UPLOAD_KEY = request.headers.get('api-key');
+
+		if (!UPLOAD_KEY) {
+			throw new Error(`Upload API key not passed to request`);
+		}
 		const requestOptions: RequestInit = {
 			method: 'POST',
-			body: forml,
+			body: formData,
 			headers: {
-				'api-key': UPLOAD_KEY ?? UPLOADFAST_API_KEY
+				'api-key': UPLOAD_KEY!
 			}
 		};
 		const response = await fetch('https://uploadfast-server.fly.dev/upload', requestOptions);
