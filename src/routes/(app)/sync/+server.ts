@@ -76,7 +76,6 @@ export async function POST({ request }) {
 	const eventName = payload['meta']['event_name'];
 
 	const userToUpdate = await User.findByIdAndUpdate(userId);
-	const keys = await Key.find({ user_id: userId });
 
 	switch (eventName) {
 		case 'order_created': {
@@ -97,29 +96,17 @@ export async function POST({ request }) {
 				userToUpdate!.plan!.plan_type =
 					payload['data']['attributes']['variant_name'] ?? userToUpdate!.plan!.plan_type;
 
-				userToUpdate!.plan = {
-					...userToUpdate.plan,
-					// @ts-ignore
-					payment_meta: payload['data']['attributes'] ?? null
-				};
+				userToUpdate.updateOne({}, { $set: { payment_meta: payload['data']['attributes'] ?? [] } });
 				await userToUpdate?.save();
 			}
 		}
 
 		case 'subscription_payment_success': {
 			if (userToUpdate) {
-				userToUpdate!.plan = {
-					...userToUpdate.plan,
-					// @ts-ignore
-					payment_meta: payload['data']['attributes'] ?? null
-				};
-				await userToUpdate?.save();
+				userToUpdate.updateOne({}, { $set: { payment_meta: payload['data']['attributes'] ?? [] } });
 			}
 
-			for (const key of keys) {
-				key.active = true;
-				await key.save();
-			}
+			await Key.updateMany({ user_id: userId }, { $set: { active: true } });
 		}
 
 		case 'subscription_expired': {
@@ -127,10 +114,7 @@ export async function POST({ request }) {
 				userToUpdate!.plan!.paid = false;
 			}
 
-			for (const key of keys) {
-				key.active = false;
-				await key.save();
-			}
+			await Key.updateMany({ user_id: userId }, { $set: { active: false } });
 		}
 	}
 
