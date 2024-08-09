@@ -5,6 +5,7 @@
 	import FileTable from './file-table.svelte';
 	import MiscModal from '$lib/components/MiscModal.svelte';
 	import { toast } from 'svelte-sonner';
+	import { setUserContext, userContext } from '$lib/context';
 
 	export let data: PageData;
 
@@ -18,7 +19,6 @@
 	function handleClick() {
 		fileInput.click();
 	}
-	
 
 	function handleFileChange(event: Event) {
 		//@ts-ignore
@@ -38,7 +38,11 @@
 
 		const request = new Request('/dashboard/files/upload', {
 			method: 'POST',
-			body: formData
+			body: formData,
+
+			headers: {
+				'uf-api-key': $userContext?.apiKeys[0].value
+			}
 		});
 
 		try {
@@ -61,7 +65,9 @@
 
 <div class="mt-6 max-w-[90%]">
 	<div class="my-4 flex flex-row items-center justify-between">
-		<h2 class="ml-1.5 text-xl font-[550] text-primary-foreground">Your Uploads</h2>
+		<h2 class="ml-1.5 text-xl font-[550] capitalize text-primary-foreground">
+			{`${$userContext?.name}'s` || 'Your'} uploads
+		</h2>
 
 		<Button
 			class="align-center text-md order-2 inline-flex gap-3 bg-emerald-800 text-emerald-100 duration-150 active:scale-95"

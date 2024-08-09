@@ -7,6 +7,7 @@ import { redirect } from '@sveltejs/kit';
 import { createClient } from '@uploadfast/client';
 import { LucideFastForward } from 'lucide-svelte';
 import { UPLOADFAST_API_KEY } from '$env/static/private';
+import { Key } from '$lib/models/api-keys';
 
 export async function load({ locals }) {
 	// Get session
@@ -17,10 +18,10 @@ export async function load({ locals }) {
 		redirect(307, '/dashboard/');
 	}
 
-	// Acess locals._user! Completely type safe
 	let user = locals._user;
 
 	const files = await UFile.find({ plan_id: user?.plan?._id }).sort({ createdAt: 'desc' });
+	const keys = await Key.find({ user_id: user._id });
 
 	const serializableFiles = files.map((item) => {
 		const res = item.toObject();

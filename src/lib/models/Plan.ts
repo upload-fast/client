@@ -14,7 +14,7 @@ export const planSchema = new Schema(
 			default: function (this) {
 				//@ts-expect-error
 				switch (this.plan_type) {
-					case 'Trial':
+					case 'Test Tier':
 						return 512000;
 					case 'Tier 1':
 						return 5242880;

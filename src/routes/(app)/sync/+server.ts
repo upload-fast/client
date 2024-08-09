@@ -38,6 +38,7 @@ export interface ResBody {
 			id: string;
 			attributes: {
 				identifier: string;
+				variant_name: string;
 				first_order_item: {
 					variant_name: string;
 					test_mode: boolean;
@@ -70,56 +71,66 @@ export async function POST({ request }) {
 	}
 
 	const payload: ResBody['body'] = JSON.parse(rawBody.toString('utf-8'));
-	const {
-		meta: {
-			event_name: eventName,
-			// userId is a custom checkout variable I am using
-			custom_data: { userId }
-		},
-		data: {
-			attributes: {
-				first_order_item: { variant_name: plan_type },
-				urls: urls,
-				renews_at: renews_at
-			}
-		}
-	} = payload;
+
+	const userId = payload['meta']['custom_data']['userId'];
+	const eventName = payload['meta']['event_name'];
+
+	const userToUpdate = await User.findById(userId);
+	const keys = await Key.find({ user_id: userId });
 
 	switch (eventName) {
 		case 'order_created': {
-			await User.findByIdAndUpdate(userId, { plan: { plan_type: plan_type } }).exec();
+			if (userToUpdate) {
+				userToUpdate!.plan!.paid = true;
+
+				if (payload['data']['attributes']['first_order_item']) {
+					userToUpdate!.plan!.plan_type =
+						payload['data']['attributes']['first_order_item']['variant_name'] ??
+						userToUpdate!.plan!.plan_type;
+				}
+				await userToUpdate?.save();
+			}
 		}
 
 		case 'subscription_created': {
-			await User.findByIdAndUpdate(userId, {
-				plan: {
-					plan_type,
-					payment_info: {
-						customer_portal: urls?.customer_portal || '',
-						renews_at: renews_at
-					}
-				}
-			}).exec();
+			if (userToUpdate) {
+				userToUpdate!.plan!.plan_type =
+					payload['data']['attributes']['variant_name'] ?? userToUpdate!.plan!.plan_type;
+
+				userToUpdate!.plan = {
+					...userToUpdate.plan,
+					// @ts-ignore
+					payment_meta: payload['data']['attributes'] ?? null
+				};
+				await userToUpdate?.save();
+			}
 		}
 
 		case 'subscription_payment_success': {
-			await User.findByIdAndUpdate(userId, { plan: { paid: true } }).exec();
-			const keys = await Key.find({ user_id: userId });
+			if (userToUpdate) {
+				userToUpdate!.plan = {
+					...userToUpdate.plan,
+					// @ts-ignore
+					payment_meta: payload['data']['attributes'] ?? null
+				};
+				await userToUpdate?.save();
+			}
 
-			keys.map(async (key) => {
+			for (const key of keys) {
 				key.active = true;
 				await key.save();
-			});
+			}
 		}
 
 		case 'subscription_expired': {
-			await User.findByIdAndUpdate(userId, { plan: { paid: false } }).exec();
-			const keys = await Key.find({ user_id: userId });
+			if (userToUpdate) {
+				userToUpdate!.plan!.paid = false;
+			}
 
-			keys.map(async (key) => {
+			for (const key of keys) {
 				key.active = false;
 				await key.save();
-			});
+			}
 		}
 	}
 

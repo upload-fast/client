@@ -4,14 +4,17 @@
 	import { Toaster, toast } from 'svelte-sonner';
 	import type { PageData, ActionData } from './$types';
 	import HomeView from '../^blocks/HomeView.svelte';
+	import { setUserContext, userContext } from '$lib/context';
 
 	export let data: PageData;
 
 	const userData = {
-		name: data?.user?.name,
-		email: data?.user?.email,
-		_id: data?.user?._id
+		name: data?.user?.name as string,
+		email: data?.user?.email as string,
+		_id: data?.user?._id as string
 	};
+
+	setUserContext({ ...userData, apiKeys: data?.apiKeys || [] });
 
 	export let form: ActionData;
 
@@ -28,7 +31,7 @@
 <GithubAuthModal openIt={!Boolean(data.session)} />
 
 {#if Boolean(data?.user?.plan)}
-	<p>Welcome back {data.user?.name}</p>
+	<p>Welcome back {$userContext?.name}</p>
 	<HomeView
 		plan={data?.user?.plan || null}
 		count={data.fileCount}
