@@ -9,7 +9,7 @@
 
 	const { user } = data;
 
-	const userData = { name: user.name, email: user.email, _id: user._id };
+	const userData = { name: user.name || '', email: user.email || '', _id: user._id || '' };
 
 	export let form: ActionData;
 
