@@ -15,6 +15,10 @@
 
 	export let plan: UserType['plan'];
 
+	const uploadCapString = `${calcFileSizeInKB(
+		plan?.storageUsed
+	)} / ${plan?.uploadCap.toLocaleString()} ${plan?.storageCap > 1048576 ? 'GB' : 'MB'}`;
+
 	export let userData: Pick<UserType, 'name' | 'email' | '_id'>;
 
 	export let count: { total: number; thisWeek: number };
@@ -43,9 +47,7 @@
 	<Card.Root class="max-w-sm">
 		<Card.Header class="pb-2">
 			<Card.Description>File Storage Level</Card.Description>
-			<Card.Title class="text-4xl"
-				>{calcFileSizeInKB(plan.storageUsed)} / {plan.storageCap / 1024} MB</Card.Title
-			>
+			<Card.Title class="text-4xl">{uploadCapString}</Card.Title>
 		</Card.Header>
 		<Card.Content>
 			<div class="text-xs text-muted-foreground">+{percentUsed}% of total</div>

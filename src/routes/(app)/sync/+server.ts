@@ -123,23 +123,34 @@ export async function POST({ request }) {
 					case 'Tier 1': {
 						plan_updates['storageCap'] = 10485760;
 						plan_updates['uploadCap'] = 5000;
+						break;
 					}
 					case 'Tier 2': {
 						plan_updates['storageCap'] = 125829120;
 						plan_updates['uploadCap'] = 100000;
+						break;
 					}
 				}
 
 				switch (sub_status) {
-					case 'on_trial':
+					case 'on_trial': {
+						plan_updates['paid'] = true;
+						const res = await Key.updateMany({ user_id: userId }, { $set: { active: true } });
+						console.log(res);
+						break;
+					}
 					case 'active': {
 						plan_updates['paid'] = true;
-						await Key.updateMany({ user_id: userId }, { $set: { active: true } });
+						const res = await Key.updateMany({ user_id: userId }, { $set: { active: true } });
+						console.log(res);
+						break;
 					}
 
 					case 'expired': {
 						plan_updates['paid'] = false;
-						await Key.updateMany({ user_id: userId }, { $set: { active: false } });
+						const res = await Key.updateMany({ user_id: userId }, { $set: { active: false } });
+						console.log(res);
+						break;
 					}
 				}
 
@@ -150,5 +161,7 @@ export async function POST({ request }) {
 		}
 	}
 
-	return new Response(rawBody);
+	return new Response('Ok', {
+		status: 200
+	});
 }
