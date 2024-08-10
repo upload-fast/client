@@ -57,7 +57,7 @@ export interface ResBody {
 }
 
 export async function POST({ request }) {
-	const rawBody = await buffer(request.body);
+	const rawBody = await request.text();
 	const hmac = crypto.createHmac('sha256', WEBHOOK_SECRET);
 	const digest = Buffer.from(hmac.update(rawBody).digest('hex'), 'utf8');
 	const signature = Buffer.from(request.headers.get('x-signature') || '', 'utf8');
@@ -73,7 +73,7 @@ export async function POST({ request }) {
 		);
 	}
 
-	const payload: ResBody['body'] = JSON.parse(rawBody.toString('utf-8'));
+	const payload: ResBody['body'] = JSON.parse(rawBody);
 
 	const userId = payload['meta']['custom_data']['userId'];
 	const eventName = payload['meta']['event_name'];
