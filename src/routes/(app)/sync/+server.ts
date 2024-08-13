@@ -118,7 +118,7 @@ export async function POST({ request }) {
 				| 'expired';
 
 			if (userToUpdate) {
-				const plan_updates = { customer_portal_url, sub_status, plan_type } as any;
+				const plan_updates = { plan_type } as any;
 				switch (plan_type) {
 					case 'Tier 1': {
 						plan_updates['storageCap'] = 10485760;
@@ -155,6 +155,11 @@ export async function POST({ request }) {
 				}
 
 				Object.assign(userToUpdate!.plan!, plan_updates);
+
+				userToUpdate.$set({
+					'plan.customer_portal_url': customer_portal_url,
+					'plan.subscription_status': sub_status
+				});
 
 				await userToUpdate.save();
 			}

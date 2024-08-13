@@ -17,3 +17,5 @@ If you need an "advanced" solution with a bunch of uneccessary features, you can
 
 
 UploadFast helps you save time and prototype fast by doing one thing well.
+
+The first step is setting up your [api key](/docs/API)

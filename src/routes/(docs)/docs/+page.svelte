@@ -1,19 +1,21 @@
 <script lang="ts">
 	//@ts-ignore
-	import Hello from './content/intro.svx';
+	import Hello from '$lib/components/Intro.svx';
+	import OpenGraph from '$lib/components/OpenGraph.svelte';
+	import Twitter from '$lib/components/Twitter.svelte';
 </script>
 
 <svelte:head>
-	<title>UploadFast Docs - Getting started with file uploads in 15 minutes.</title>
-	<meta
-		name="description"
-		content="UploadFast documentation - Start uploading files from your javascript app for free"
+	<title>Uploadfast | Documentation</title>
+	<OpenGraph
+		siteTitle="UploadFast"
+		pageTitle="UploadFast | Documentation"
+		metadescription="The site to help you succeed with Uploadfast."
+		url="https://www.uploadfast.dev/docs"
+		image="/uploadfast-poster-123.png"
+		squareImage="/uploadfast-poster-123.png"
 	/>
-
-	<meta
-		name="og:description"
-		content="UploadFast documentation - Start uploading files from your javascript app for free"
-	/>
+	<Twitter image={{ url: '/uploadfast-poster-123.png' }} />
 </svelte:head>
 
 <section class="max-w-6xl">
@@ -21,6 +23,6 @@
 		class="prose px-6 text-base prose-headings:text-gray-100 prose-h1:-mb-1 prose-a:!text-primary-foreground prose-strong:text-white/90 sm:px-3"
 	>
 		<h1>Welcome to the UploadFast Docs!</h1>
-		<p class="mt-3 text-lg">Read the introduction <a href="/docs/intro">here.</a></p>
+		<Hello />
 	</article>
 </section>

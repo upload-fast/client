@@ -3,7 +3,22 @@
 	import Sidebar from './^blocks/Sidebar.svelte';
 	import type { PageData } from './dashboard/$types';
 	export let data: PageData;
+	import OpenGraph from '$lib/components/OpenGraph.svelte';
+	import Twitter from '$lib/components/Twitter.svelte';
 </script>
+
+<svelte:head>
+	<title>Uploadfast | Dashboard</title>
+	<OpenGraph
+		siteTitle="UploadFast"
+		pageTitle="UploadFast | Dashboard"
+		metadescription="Control panel for your files"
+		url="https://www.uploadfast.dev/dashboard"
+		image="/uploadfast-poster-123.png"
+		squareImage="/uploadfast-poster-123.png"
+	/>
+	<Twitter image={{ url: '/uploadfast-poster-123.png' }} />
+</svelte:head>
 
 <main class="hidden min-h-screen w-full flex-col bg-muted/40 p-0 md:flex">
 	<Sidebar />

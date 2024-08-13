@@ -1,7 +1,7 @@
 ---
 title: "Getting Access"
 description: Accessing the API.
-order: 2
+order: 1
 name: 'API keys'
 ---
 

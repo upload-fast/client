@@ -3,13 +3,23 @@
 	import type { PageData } from './$types';
 	import Pricing from './pricing.svelte';
 	import { buttonVariants } from '$lib/components/ui/button';
+	import OpenGraph from '$lib/components/OpenGraph.svelte';
+	import Twitter from '$lib/components/Twitter.svelte';
 
 	export let data: PageData;
 </script>
 
 <svelte:head>
-	<title>UploadFast - Ship file uploads in 15 minutes.</title>
-	<meta name="description" content="Start uploading files from your javascript app for free" />
+	<title>Uploadfast | Do images right.</title>
+	<OpenGraph
+		siteTitle="UploadFast"
+		pageTitle="UploadFast"
+		metadescription="Add image uploads to your app the right way."
+		url="https://www.uploadfast.dev"
+		image="/uploadfast-poster-123.png"
+		squareImage="/uploadfast-poster-123.png"
+	/>
+	<Twitter image={{ url: '/uploadfast-poster-123.png' }} />
 </svelte:head>
 
 <div class="flex flex-row items-center justify-between px-4 py-2 md:px-8">
