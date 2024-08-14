@@ -55,7 +55,7 @@
 	</p>
 
 	<div class="mt-10 flex flex-col gap-4 sm:flex-row">
-		<Button class="mx-auto text-lg text-white/90" size="lg" variant="outline" href="/docs/intro"
+		<Button class="mx-auto text-lg text-white/90" size="lg" variant="outline" href="/docs"
 			>Read the docs</Button
 		>
 		<Button

@@ -9,11 +9,11 @@
 		<div class="mx-auto max-w-4xl text-center">
 			<h1 class="text-lg font-semibold leading-7 text-emerald-200">Pricing</h1>
 			<p class="mt-2 text-xl font-bold tracking-tight text-white md:text-4xl">
-				Get started for free
+				Get started with a one-time payment.
 			</p>
 		</div>
 		<p class="text-md mx-auto mt-4 max-w-2xl text-center leading-8 text-gray-300">
-			No subscription headache, thanks to Cloudflare.
+			Get value immediately.
 		</p>
 
 		<p class="text-md mx-auto max-w-2xl text-center leading-8 text-gray-300">

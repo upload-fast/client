@@ -1,4 +1,4 @@
-import mongoose, { Types } from 'mongoose';
+import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
@@ -33,7 +33,7 @@ export const planSchema = new Schema(
 			default: function (this) {
 				//@ts-expect-error
 				switch (this.plan_type) {
-					case 'Trial':
+					case 'Test Tier':
 						return 50;
 					case 'Tier 1':
 						return 5000;
@@ -50,5 +50,5 @@ export const planSchema = new Schema(
 	}
 );
 
-const PlanModel = () => mongoose.model('projects', planSchema);
+export const PlanModel = () => mongoose.model('projects', planSchema);
 export const Project = (mongoose.models['projects'] || PlanModel()) as ReturnType<typeof PlanModel>;
