@@ -4,8 +4,8 @@
 	export let data: Record<any, any>[] = [];
 </script>
 
-<div class="pt-5" id="pricing">
-	<div class="mx-auto mt-4 max-w-7xl px-6 pb-20 lg:px-8">
+<div class="lg:py-12" id="pricing">
+	<div class="mx-auto mt-8 max-w-7xl px-6 pb-24 lg:px-8">
 		<div class="mx-auto max-w-4xl text-center">
 			<h1 class="text-lg font-semibold leading-7 text-emerald-200">Pricing</h1>
 			<p class="mt-2 text-xl font-bold tracking-tight text-white md:text-4xl">

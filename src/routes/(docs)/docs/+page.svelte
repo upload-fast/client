@@ -1,6 +1,6 @@
 <script lang="ts">
 	//@ts-ignore
-	import Hello from '$lib/components/Intro.svx';
+	import Hello from '$lib/components/intro.svx';
 	import OpenGraph from '$lib/components/OpenGraph.svelte';
 	import Twitter from '$lib/components/Twitter.svelte';
 </script>
