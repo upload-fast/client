@@ -10,7 +10,7 @@ dependencies:
     version: 0.30.0
   '@auth/mongodb-adapter':
     specifier: ^3.0.0
-    version: 3.0.0(mongodb@6.5.0)
+    version: 3.0.0(mongodb@6.8.0)
   '@auth/sveltekit':
     specifier: ^1.0.0
     version: 1.0.0(@sveltejs/kit@2.0.0)(svelte@4.2.7)
@@ -143,13 +143,13 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/mongodb-adapter@3.0.0(mongodb@6.5.0):
+  /@auth/mongodb-adapter@3.0.0(mongodb@6.8.0):
     resolution: {integrity: sha512-bJP+V8tzAbPE6b+S9Xn5e5JELMMcb6if/4JKxtqeZEAxlczqSAqIxz2aCyn+KA3F3gNBVCOi6es/aIzapga9ZA==}
     peerDependencies:
       mongodb: ^6
     dependencies:
       '@auth/core': 0.30.0
-      mongodb: 6.5.0
+      mongodb: 6.8.0
     transitivePeerDependencies:
       - '@simplewebauthn/browser'
       - '@simplewebauthn/server'
@@ -446,6 +446,12 @@ packages:
       sparse-bitfield: 3.0.3
     dev: false
 
+  /@mongodb-js/saslprep@1.1.8:
+    resolution: {integrity: sha512-qKwC/M/nNNaKUBMQ0nuzm47b7ZYWQHN3pcXq4IIcoSBc2hOIrflAxJduIvvqmhoz3gR2TacTAs8vlsCVPkiEdQ==}
+    dependencies:
+      sparse-bitfield: 3.0.3
+    dev: false
+
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -719,6 +725,12 @@ packages:
       '@types/webidl-conversions': 7.0.3
     dev: false
 
+  /@types/whatwg-url@11.0.5:
+    resolution: {integrity: sha512-coYR071JRaHa+xoEvvYqvnIHaVqaYrLPbsufM9BF63HkwI5Lgmy2QR8Q5K/lYDYo5AK82wOvSOS0UsLTpTG7uQ==}
+    dependencies:
+      '@types/webidl-conversions': 7.0.3
+    dev: false
+
   /@uploadfast/client@0.0.14:
     resolution: {integrity: sha512-It7FVPG2uBiI3QaW0KnYlxFTeXQC6OjgOlGrDcD33UnVQYqWD1Ym5Jw1odzvkBvHWQIdYQO6FJ2RzfhpWD5fGw==}
     dev: false
@@ -834,6 +846,11 @@ packages:
 
   /bson@6.6.0:
     resolution: {integrity: sha512-BVINv2SgcMjL4oYbBuCQTpE3/VKOSxrOA8Cj/wQP7izSzlBGVomdm+TcUd0Pzy0ytLSSDweCKQ6X3f5veM5LQA==}
+    engines: {node: '>=16.20.1'}
+    dev: false
+
+  /bson@6.8.0:
+    resolution: {integrity: sha512-iOJg8pr7wq2tg/zSlCCHMi3hMm5JTOxLTagf3zxhcenHsFp+c6uOs6K7W5UE7A4QIJGtqh/ZovFNMP4mOPJynQ==}
     engines: {node: '>=16.20.1'}
     dev: false
 
@@ -1315,6 +1332,13 @@ packages:
       whatwg-url: 13.0.0
     dev: false
 
+  /mongodb-connection-string-url@3.0.1:
+    resolution: {integrity: sha512-XqMGwRX0Lgn05TDB4PyG2h2kKO/FfWJyCzYQbIhXUxz7ETt0I/FqHjUeqj37irJ+Dl1ZtU82uYyj14u2XsZKfg==}
+    dependencies:
+      '@types/whatwg-url': 11.0.5
+      whatwg-url: 13.0.0
+    dev: false
+
   /mongodb@6.5.0:
     resolution: {integrity: sha512-Fozq68InT+JKABGLqctgtb8P56pRrJFkbhW0ux+x1mdHeyinor8oNzJqwLjV/t5X5nJGfTlluxfyMnOXNggIUA==}
     engines: {node: '>=16.20.1'}
@@ -1345,6 +1369,38 @@ packages:
       '@mongodb-js/saslprep': 1.1.5
       bson: 6.6.0
       mongodb-connection-string-url: 3.0.0
+    dev: false
+
+  /mongodb@6.8.0:
+    resolution: {integrity: sha512-HGQ9NWDle5WvwMnrvUxsFYPd3JEbqD3RgABHBQRuoCEND0qzhsd0iH5ypHsf1eJ+sXmvmyKpP+FLOKY8Il7jMw==}
+    engines: {node: '>=16.20.1'}
+    peerDependencies:
+      '@aws-sdk/credential-providers': ^3.188.0
+      '@mongodb-js/zstd': ^1.1.0
+      gcp-metadata: ^5.2.0
+      kerberos: ^2.0.1
+      mongodb-client-encryption: '>=6.0.0 <7'
+      snappy: ^7.2.2
+      socks: ^2.7.1
+    peerDependenciesMeta:
+      '@aws-sdk/credential-providers':
+        optional: true
+      '@mongodb-js/zstd':
+        optional: true
+      gcp-metadata:
+        optional: true
+      kerberos:
+        optional: true
+      mongodb-client-encryption:
+        optional: true
+      snappy:
+        optional: true
+      socks:
+        optional: true
+    dependencies:
+      '@mongodb-js/saslprep': 1.1.8
+      bson: 6.8.0
+      mongodb-connection-string-url: 3.0.1
     dev: false
 
   /mongoose@8.3.2:

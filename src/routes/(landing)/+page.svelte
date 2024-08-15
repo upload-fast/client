@@ -58,8 +58,11 @@
 	</p>
 
 	<div class="mt-12 flex flex-col gap-4 sm:flex-row">
-		<Button class="mx-auto text-lg text-white/90" size="lg" variant="outline" href="/docs"
-			>Read the docs</Button
+		<Button
+			class="mx-auto border border-pink-200/40 text-lg text-white/90"
+			size="lg"
+			variant="outline"
+			href="/docs">Read the docs</Button
 		>
 		<Button
 			class="mx-auto bg-pink-500 text-lg text-white/90 opacity-0 sm:opacity-100"

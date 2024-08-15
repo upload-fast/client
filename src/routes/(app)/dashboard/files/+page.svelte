@@ -5,11 +5,8 @@
 	import FileTable from './file-table.svelte';
 	import MiscModal from '$lib/components/MiscModal.svelte';
 	import { toast } from 'svelte-sonner';
-	import { userContext } from '$lib/context';
 
 	export let data: PageData;
-
-	const key = $userContext?.apiKeys[0].value;
 
 	let fileInput: HTMLInputElement;
 	let img: HTMLImageElement;
@@ -35,6 +32,10 @@
 	}
 
 	async function appendFileandUpload(event: Event) {
+		if (!data.keys[0].value) {
+			alert('API key not defined');
+			return;
+		}
 		const formData = new FormData();
 		formData.append('file', PickedFile!);
 
@@ -43,7 +44,7 @@
 			body: formData,
 
 			headers: {
-				'api-key': key
+				'api-key': data.keys[0].value!
 			}
 		});
 
@@ -54,6 +55,7 @@
 			if (response.ok) {
 				toast.success('Uploaded successfully!');
 				showModal = false;
+				localStorage.removeItem('x-api-key');
 				location.reload();
 			} else {
 				loading = false;
@@ -70,7 +72,7 @@
 <div class="mt-6 max-w-[90%]">
 	<div class="my-4 flex flex-row items-center justify-between">
 		<h2 class="ml-1.5 text-xl font-[550] capitalize text-primary-foreground">
-			{`${$userContext?.name}'s` ?? 'Your'} uploads
+			{data.user.name} uploads
 		</h2>
 
 		<Button

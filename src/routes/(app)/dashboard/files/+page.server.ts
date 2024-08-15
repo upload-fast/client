@@ -1,13 +1,9 @@
 import { UFile } from '$lib/models/files';
-import { format } from '@auth/mongodb-adapter';
 import type { Ufile } from './types';
-import { User } from '$lib/models/user';
 import { convertObjectIds } from '$lib/server/auth_utils/_auth';
 import { redirect } from '@sveltejs/kit';
-import { createClient } from '@uploadfast/client';
-import { LucideFastForward } from 'lucide-svelte';
-import { UPLOADFAST_API_KEY } from '$env/static/private';
 import { Key } from '$lib/models/api-keys';
+import type { UserType } from '../../../../app';
 
 export async function load({ locals }) {
 	// Get session
@@ -23,13 +19,18 @@ export async function load({ locals }) {
 	const files = await UFile.find({ plan_id: user?.plan?._id }).sort({ createdAt: 'desc' });
 	const keys = await Key.find({ user_id: user._id });
 
-	const serializableFiles = files.map((item) => {
-		const res = item.toObject();
-		return convertObjectIds(res) as Ufile;
-	});
+	// Helper to POJO-ize mongo docs
+	function serialize<T>(entity: {}[]): T[] {
+		return entity.map((item: any) => {
+			const res = item.toObject();
+			return convertObjectIds(res) as T;
+		});
+	}
 
 	return {
-		files: serializableFiles
+		files: serialize<Ufile>(files),
+		keys: serialize<{ value: string }>(keys),
+		user: { name: user.name, email: user.email }
 	};
 }
 

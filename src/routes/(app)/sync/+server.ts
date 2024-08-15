@@ -161,6 +161,8 @@ export async function POST({ request }) {
 					'plan.subscription_status': sub_status
 				});
 
+				userToUpdate.markModified('plan');
+
 				await userToUpdate.save();
 			}
 		}
