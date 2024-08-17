@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import '$lib/prism-shades-of-purple.css';
 	import type { PageData } from './docs/$types';
 
 	export let data: PageData;

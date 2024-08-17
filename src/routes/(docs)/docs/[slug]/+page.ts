@@ -7,7 +7,7 @@ export async function load({ params }) {
 
 		return {
 			pageContent: res.default,
-			meta: res.metadata
+			meta: { ...res.metadata, slug: params.slug }
 		};
 	} catch (e) {
 		console.log(e);

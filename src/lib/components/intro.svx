@@ -4,18 +4,18 @@ description: 'Start using uploadfast in your app'
 order: 1
 ---
 
-## {title} 
+# {title} 
 
-Ship file uploads from your web app in record time.
---
-Most of the time you need one thing out of your file upload forays.
-- The link to the file that was stored 
+I got tired of using mutliple services and reading lots of docs just to get the job done. 
 
-So you can access it, download it, display it.. whatever.
+I also didn't want to have to deal to write S3 boilerplate each time i need to image uploads.
 
-If you need an "advanced" solution with a bunch of uneccessary features, you can use cloudinary, aws S3 or cloudflare images.
+When i do image uploads, there's only thing that **really** matters,
 
+- That i can link the file back to my app in a seamless way
 
-UploadFast helps you save time and prototype fast by doing one thing well.
+So i can download it, display it, or allow users to manipulate the images at some later point.
+
+So i built uploadfast, a tool to help you add file uploads to your app **fast**.
 
 The first step is setting up your [api key](/docs/API)

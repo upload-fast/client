@@ -20,9 +20,8 @@
 
 <section class="max-w-6xl">
 	<article
-		class="prose px-6 text-base prose-headings:text-gray-100 prose-h1:-mb-1 prose-a:!text-primary-foreground prose-strong:text-white/90 sm:px-3"
+		class="prose px-6 text-base prose-headings:text-gray-100 prose-h1:-mb-1 prose-a:!text-primary-foreground prose-strong:text-white/90 sm:px-3 md:text-lg"
 	>
-		<h1>Welcome to the UploadFast Docs!</h1>
 		<Hello />
 	</article>
 </section>

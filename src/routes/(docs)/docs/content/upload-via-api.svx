@@ -1,6 +1,6 @@
 ---
-title: 'Upload a file via API'
-description: 'Upload a file with the API directly.'
+title: 'Upload files via API'
+description: 'Upload a file via the API directly.'
 order: 2
 prefix: 'guide'
 name: 'Upload via API'
@@ -20,35 +20,37 @@ name: 'Upload via API'
 
 ```js
 // POST route for file upload
-app.post('/upload', async (req, res) => {
-  const file = req.file; // Assuming the file is sent as part of the request
+app.post('/upload_file', async (req, res) => {
+ const file = req.file; // Assuming the file is sent as part of the request
 
-  // Create a new FormData object and append the file to it
-  const formData = new FormData();
-  formData.append('file', file);
+ // Create a new FormData object and append the file to it
+ const formData = new FormData();
+ formData.append('file', file);
 
-  try {
-    // Make a POST request to the external API endpoint
-    const response = await fetch('https://uploadfast-server.fly.dev/upload', {
-      method: 'POST',
-      headers: {
-        'api-key': process.env.UPLOADFAST_KEY
-      },
-      body: formData
+ try {
+   // Make a POST request to the Uploadfast API endpoint
+   const response = await fetch('https://uploadfast-server.fly.dev/upload', {
+    method: 'POST',
+    headers: {
+      'api-key': process.env.UPLOADFAST_KEY
+    },
+    body: formData
     });
 
-    // Your uploaded file
-    const data = await response.json()
-    // Get data about the file
-    const {url, file_name} = data[0]
+  // Your uploaded file
+  const data = await response.json()
+  // Get data about the file
+  const {url, file_name} = data[0]
 
-    // Save to database
-    // ...
+  // Persist URI to database..
 
-    res.status(200).send('File uploaded successfully');
+  return new Response('Files uploaded successfully', {status: 200});
+
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    return new Response('File upload failed', {
+      status: 500
+    })
   }
 });
 ```

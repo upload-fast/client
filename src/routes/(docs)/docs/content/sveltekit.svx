@@ -7,17 +7,9 @@ name: 'Sveltekit'
 ---
 
 ## {title}
-**{description}**
+{description}
 
-
-### Steps
-- Create a server action at any chosen route.
-
-- Copy and paste this code  ([reference article ](https://www.okupter.com/blog/sveltekit-file-upload))
-
-
-
-### Installation
+### Install the Javascript SDK.
 ```powershell
 pnpm add @uploadfast/client
 ```
@@ -37,7 +29,8 @@ import { createClient } from '@uploadfast/client'
 import { UPLOADFAST_API_KEY } from '$env/static/private';
 
 export const actions = {
-  // You can use a named action for tidiness.
+  // You can use a named action for example.
+
   upload: async ({ request }) => {
     const formData = Object.fromEntries(await request.formData());
     const fast = createClient

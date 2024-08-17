@@ -1,40 +1,58 @@
 ---
-title: "Getting Access"
-description: Accessing the API.
+title: "Getting started"
+description: Accessing the API
 order: 1
 name: 'API keys'
 ---
 
-## {description}
+## {title}
+
 #### Obtaining an API Key
 
 - Go to your uploadfast dashboard. 
-- Create an API key by clicking **[Add new key](/dashboard/#new-key)**.
+- Create an API key by clicking **[add new key](/dashboard/#new-key)**.
 
+After activating your API keys, you may begin using the service.
 
-If you're a paid customer, your api-keys will be active by default. 
-
-If you're not a paid customer, any keys you create will be revoked after your trial ends.
+Either by calling the API directly or with SDK's for your preferred language.
 
 Remember, your API key is private, keep it safe. 
 
-## Using the API Key
+### Using the API Key
 
-To authenticate your requests, include the api key header in your request.
-(Heheheh)
+To authenticate your requests, include the **api-key** header in your request.
 
 ```http
 api-key: YOUR_API_KEY
 ```
 
-### Sample request in Node js.
+<br />
+
+#### Sample request in Node js.
 ```js
 const response = await fetch('https://uploadfast-server.fly.dev/upload', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-        api-key: {process.env.UPLOADFAST_KEY}
-    },
-    body: {} /* Formdata object with your file in there */
+ method: 'POST',
+ headers: {
+    'Content-Type': 'application/json'
+    'api-key' : {process.env.UPLOADFAST_KEY}
+ },
+ body: {} /* Formdata object with your file in there */
 });
+```
+
+### Using the Javascript SDK
+
+<div class = "my-4"/>
+
+- Install the SDK
+```powershell
+pnpm add @uploadfast/client
+```
+<div class = "my-4"/>
+
+- Access uploaded files.
+```js
+const fast = createClient({apiKey: UPLOADFAST_API_KEY})
+const fileData = await fast.upload({resource: file})
+const { url, file_name } = fileData[0]
 ```
