@@ -6,6 +6,7 @@
 	import { toast } from 'svelte-sonner';
 	import Trash from 'lucide-svelte/icons/trash';
 	import ExternalLink from 'lucide-svelte/icons/external-link';
+	import Tooltipped from '$lib/components/Tooltipped.svelte';
 
 	export let id: string;
 
@@ -22,20 +23,21 @@
 			<Ellipsis class="h-4 w-4" />
 		</Button>
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content class="bg-black/40 p-4 backdrop-blur-md">
-		<DropdownMenu.Group class="flex flex-row flex-nowrap gap-4">
-			<DropdownMenu.Item on:click={copyUrl} class="inline-flex gap-2 p-2">
-				<Clipboard size={16} />
-			</DropdownMenu.Item>
-			<DropdownMenu.Item class="inline-flex p-2">
-				<a href={id} target="_blank" class="text-sm">
-					<ExternalLink size={16} />
-				</a>
+	<DropdownMenu.Content class="bg-black/80 p-4 backdrop-blur-lg">
+		<DropdownMenu.Group class="flex flex-row gap-6">
+			<DropdownMenu.Item on:click={copyUrl} class="inline-flex">
+				<Tooltipped content={'Copy file url to clipboard'}>
+					<Clipboard size={16} />
+				</Tooltipped>
 			</DropdownMenu.Item>
 
-			<DropdownMenu.Item class="inline-flex p-2">
-				<Trash size={16} class="text-red-400" />
-			</DropdownMenu.Item>
+			<a href={id} target="_blank" class="cursor-pointer text-sm">
+				<Tooltipped content={'Open image in new tab'}>
+					<DropdownMenu.Item class="inline-flex">
+						<ExternalLink size={16} />
+					</DropdownMenu.Item>
+				</Tooltipped>
+			</a>
 		</DropdownMenu.Group>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>

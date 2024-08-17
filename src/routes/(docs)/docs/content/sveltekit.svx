@@ -1,5 +1,5 @@
 ---
-title: 'Svelte-Kit'
+title: 'SvelteKit'
 description: 'Upload a file from your Svelte Kit App'
 order: 3
 prefix: 'guide'
@@ -62,7 +62,7 @@ Your client code could look like this.
 ```js
 <form method="post" use:enhance enctype="multipart/form-data" action="?/upload">
   <div class="group">
-    <label for="file">Upload yout profile picture</label>
+    <label for="file">Upload your profile picture</label>
     <input type="file" id="file" name="file" />
   </div>
 
