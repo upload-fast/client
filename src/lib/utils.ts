@@ -56,14 +56,14 @@ export const flyAndScale = (
 };
 
 export function replaceCharacters(str: string) {
-	if (str.length <= 3) {
-		return str;
-	}
+	let firstThreeChars = str.slice(0, 3); // Extract the first three characters
 
-	const firstThreeChars = str.slice(0, 3); // Extract the first three characters
+	if (firstThreeChars !== 'ufl') {
+		firstThreeChars = 'ufl';
+	}
 	const asterisks = '*'.repeat(str.length - 3); // Generate asterisks for the remaining characters
 
-	return firstThreeChars + ' ' + asterisks;
+	return firstThreeChars + ' _ ' + asterisks;
 }
 
 export function calcFileSizeInKB(size: number) {

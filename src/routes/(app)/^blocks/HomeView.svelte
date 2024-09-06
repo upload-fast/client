@@ -2,14 +2,12 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Progress } from '$lib/components/ui/progress';
 	import { cn, generateStorageCapString, getPercentOf, replaceCharacters } from '$lib/utils';
-	import { calcFileSizeInKB } from '$lib/utils';
 	import Copy from 'lucide-svelte/icons/copy';
-	import Link from './Link.svelte';
-	import { Plus, Trash2 } from 'lucide-svelte';
-	import { Button } from '$lib/components/ui/button';
 	import CreateApiKey from './CreateApiKey.svelte';
 	import ActivateApIkey from './ActivateAPIkey.svelte';
 	import type { UserType } from '../../../app';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import ExternalLinkIcon from 'lucide-svelte/icons/external-link';
 
 	export let apiKeys: any;
 
@@ -37,7 +35,9 @@
 			<div class="text-xs text-muted-foreground">Plan Type - {plan.plan_type}</div>
 		</Card.Content>
 		<Card.Footer class="text-xs text-muted-foreground"
-			>Upgrade to access more storage space and features.</Card.Footer
+			>{plan.paid
+				? 'May the f (ile) be with you.'
+				: 'Upgrade to access more storage space and features.'}</Card.Footer
 		>
 	</Card.Root>
 	<Card.Root class="max-w-sm">
@@ -79,10 +79,16 @@
 
 <!-- Extract to component later -->
 <div class="mt-12 w-full">
-	<p class=" ml-1 font-semibold underline">API KEYS</p>
-	<p class="ml-0.5 mt-1 text-sm text-muted-foreground">Keep your API keys private.</p>
+	<p class="mb-2 font-semibold underline">API KEYS</p>
+	<p>
+		Find out how to use api keys <a href="/docs/API" target="_blank" class="text-green-200">here</a>
+	</p>
 
 	<div class="my-3 mt-4 flex flex-col gap-4">
+		{#if !apiKeys}
+			<p>No API keys created</p>
+		{/if}
+
 		{#each apiKeys as key}
 			<div class="flex flex-row items-center gap-4">
 				<div
@@ -116,7 +122,13 @@
 				email={userData.email}
 				userId={userData._id}
 			/>
-			<CreateApiKey>Create new API key</CreateApiKey>
+			{#if apiKeys.length < 3}
+				<CreateApiKey>Create new API key</CreateApiKey>
+			{/if}
+
+			<Button href="/dashboard/keys" class="bg-[#E6F6EB] text-[#193B2D]"
+				>Manage api keys <ExternalLinkIcon size={14} class="ml-2" /></Button
+			>
 		</div>
 	</div>
 </div>

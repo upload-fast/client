@@ -13,7 +13,7 @@
 			href={to}
 			class={cn(
 				'flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted/80 hover:text-foreground md:h-10 md:w-10',
-				isActive ? 'bg-muted' : ''
+				isActive ? 'bg-muted/80' : ''
 			)}
 			use:builder.action
 			{...builder}
