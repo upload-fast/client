@@ -67,27 +67,4 @@ export const actions = {
 		redirect(307, '/dashboard/files');
 	},
 
-	createKey: async ({ locals }) => {
-		const user = locals._user;
-		const reqBody = {
-			user_id: user?._id?.toString()
-		};
-
-		const response = await fetch('https://uploadfast-server.fly.dev/api-key', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(reqBody)
-		});
-
-		if (!response.ok) {
-			return { error: true, payload: response.statusText };
-		}
-		return { error: false, payload: await response.json() };
-	},
-
-	activate: async ({ locals }) => {
-		redirect(303, 'https://upload-fast.lemonsqueezy.com/');
-	}
 };

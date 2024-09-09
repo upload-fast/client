@@ -5,6 +5,7 @@
 	export let data: PageData;
 	import OpenGraph from '$lib/components/OpenGraph.svelte';
 	import Twitter from '$lib/components/Twitter.svelte';
+	import { Toaster } from 'svelte-sonner';
 </script>
 
 <svelte:head>

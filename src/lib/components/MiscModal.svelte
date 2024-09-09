@@ -8,6 +8,7 @@
 	export let closeOnEscape: boolean = true;
 	export let closeOnOutsideClick: boolean = true;
 	export let handleClose: () => void = () => null;
+	export let triggerByBtn: boolean = false;
 </script>
 
 <Dialog.Root
@@ -16,7 +17,7 @@
 	bind:closeOnOutsideClick
 	bind:onOpenChange={handleClose}
 >
-	<Dialog.Trigger>
+	<Dialog.Trigger class={triggerByBtn ? 'block' : 'hidden'}>
 		<slot name="trigger">
 			<Button>{btnText}</Button>
 		</slot>

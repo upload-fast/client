@@ -21,7 +21,7 @@
 		{#if loading}
 			<Circle class="mx-3 animate-spin" size={12} />
 		{/if}
-		<slot>Create API key</slot>
+		<slot>Create new key</slot>
 	</Button>
 </form>
 

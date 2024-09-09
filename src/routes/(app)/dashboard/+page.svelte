@@ -1,18 +1,11 @@
 <script lang="ts">
 	import GithubAuthModal from '../^blocks/GithubAuthModal.svelte';
 	import CreateProject from '../^blocks/CreateProject.svelte';
-	import { Toaster, toast } from 'svelte-sonner';
+	import { toast, Toaster } from 'svelte-sonner';
 	import type { PageData, ActionData } from './$types';
 	import HomeView from '../^blocks/HomeView.svelte';
-	import { onMount } from 'svelte';
 
 	export let data: PageData;
-
-	const userData = {
-		name: data?.user?.name as string,
-		email: data?.user?.email as string,
-		_id: data?.user?._id as string
-	};
 
 	export let form: ActionData;
 
@@ -29,15 +22,10 @@
 <GithubAuthModal openIt={!Boolean(data.session)} />
 
 {#if Boolean(data?.user?.plan)}
-	<p>Welcome back {userData.name}</p>
-	<HomeView
-		plan={data?.user?.plan || null}
-		count={data.fileCount}
-		apiKeys={data.apiKeys}
-		{userData}
-	/>
+	<p>Welcome back {data.user.name}</p>
+	<HomeView plan={data?.user?.plan || null} count={data.fileCount} apiKeys={data.apiKeys} />
 {:else}
 	<CreateProject />
 {/if}
 
-<Toaster richColors />
+<Toaster richColors position="top-right" />

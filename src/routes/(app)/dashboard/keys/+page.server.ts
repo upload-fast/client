@@ -1,5 +1,5 @@
 import { Key } from '$lib/models/api-keys';
-import { redirect } from '@sveltejs/kit';
+import { json, redirect } from '@sveltejs/kit';
 
 export async function load({ locals }) {
 	const session = await locals.auth();
@@ -12,4 +12,37 @@ export async function load({ locals }) {
 	let user = locals._user;
 
 	const keys = await Key.find({ user_id: user._id });
+
+	return {
+		keys: JSON.parse(JSON.stringify(keys)),
+		user: locals._user ? (JSON.parse(JSON.stringify(locals._user)) as typeof locals._user) : null
+	};
 }
+
+export const actions = {
+	createKey: async ({ locals }) => {
+		const user = locals._user;
+		const reqBody = {
+			user_id: user?._id?.toString()
+		};
+
+		const response = await fetch('https://uploadfast-server.fly.dev/api-key', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(reqBody)
+		});
+
+		if (!response.ok) {
+			return { error: true, payload: response.statusText };
+		}
+
+		const { payload } = await response.json();
+
+		return {
+			error: false,
+			payload
+		};
+	}
+};
