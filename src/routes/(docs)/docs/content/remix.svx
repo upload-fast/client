@@ -1,0 +1,79 @@
+---
+title: 'Remix.js'
+description: 'Upload a file from your Remix.js App'
+order: 3
+prefix: 'guide'
+name: 'Remix.js'
+---
+
+## Remix.js
+Upload a file from your Remix.js App
+
+### Install the Javascript SDK
+```bash
+npm install @uploadfast/client
+```
+
+### `app/routes/upload.tsx`
+```typescript
+import { ActionFunction, json } from "@remix-run/node";
+import { createClient } from '@uploadfast/client';
+import { UPLOADFAST_API_KEY } from "~/config";
+
+export const action: ActionFunction = async ({ request }) => {
+  try {
+    const formData = await request.formData();
+    const file = formData.get('file');
+
+    if (!file || typeof file !== 'object') {
+      return json({ error: 'You must provide a file to upload' }, { status: 400 });
+    }
+
+    const fast = createClient({ apiKey: UPLOADFAST_API_KEY });
+    const fileData = await fast.upload(file);
+    const { url, file_name } = fileData[0];
+
+    // Store meta data in your database
+
+    return json({ url, file_name });
+  } catch (error) {
+    console.error(error);
+    return json({ error: 'An error occurred while uploading the file' }, { status: 500 });
+  }
+};
+```
+
+### `app/routes/index.tsx`
+Your client code could look like this.
+
+```typescript
+import { useState } from 'react';
+import { Form, useActionData } from "@remix-run/react";
+
+export default function Home() {
+  const [file, setFile] = useState<File | null>(null);
+  const actionData = useActionData<{ url?: string; file_name?: string; error?: string }>();
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFile(e.target.files?.[0] || null);
+  };
+
+  return (
+    <div>
+      <h1>Upload a file</h1>
+      <Form method="post" encType="multipart/form-data">
+        <input type="file" name="file" onChange={handleFileChange} />
+        <button type="submit">Upload</button>
+      </Form>
+      {actionData?.error && <p>Error: {actionData.error}</p>}
+      {actionData?.url && actionData?.file_name && (
+        <div>
+          <p>Uploaded file:</p>
+          <p>URL: {actionData.url}</p>
+          <p>Filename: {actionData.file_name}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```

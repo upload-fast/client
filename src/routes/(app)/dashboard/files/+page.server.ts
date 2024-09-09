@@ -17,6 +17,7 @@ export async function load({ locals }) {
 	let user = locals._user;
 
 	const files = await UFile.find({ plan_id: user?.plan?._id }).sort({ createdAt: 'desc' });
+
 	const keys = await Key.find({ user_id: user._id });
 
 	// Helper to POJO-ize mongo docs

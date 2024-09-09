@@ -84,9 +84,13 @@
 		Find out how to use api keys <a href="/docs/API" target="_blank" class="text-green-200">here</a>
 	</p>
 
-	<div class="my-3 mt-4 flex flex-col gap-4">
+	<div class="my-3 mt-4 flex flex-col gap-2">
 		{#if !apiKeys}
 			<p>No API keys created</p>
+		{:else}
+			<Button href="/dashboard/keys" class="mb-4 max-w-fit rounded-sm bg-[#E6F6EB] text-[#193B2D]"
+				>Manage api keys <ExternalLinkIcon size={14} class="ml-2" /></Button
+			>
 		{/if}
 
 		{#each apiKeys as key}
@@ -125,10 +129,6 @@
 			{#if apiKeys.length < 3}
 				<CreateApiKey>Create new API key</CreateApiKey>
 			{/if}
-
-			<Button href="/dashboard/keys" class="bg-[#E6F6EB] text-[#193B2D]"
-				>Manage api keys <ExternalLinkIcon size={14} class="ml-2" /></Button
-			>
 		</div>
 	</div>
 </div>

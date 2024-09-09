@@ -1,0 +1,93 @@
+---
+title: 'Next.js'
+description: 'Upload a file from your Next.js App'
+order: 3
+prefix: 'guide'
+name: 'Next.js'
+---
+
+## {title}
+{description}
+
+### Install the Javascript SDK.
+```bash
+npm install @uploadfast/client
+```
+
+### `pages/api/upload.js`
+```js
+import { createClient } from '@uploadfast/client'
+import { UPLOADFAST_API_KEY } from '../../../config'
+
+export default async function POST(req, res) {
+    try {
+      const formData = await req.formdata()
+      const fast = createClient({ apiKey: UPLOADFAST_API_KEY })
+      const files = formdata.getAll('file')
+
+      if (!formData.get('file')) {
+        return res.status(400).json({ error: 'You must provide a file to upload' })
+      }
+
+      const fileData = await fast.upload(files)
+
+      // If there's a single file tp be uploaded
+      const { url, file_name } = fileData[0]
+
+      // Store meta data in your database
+
+      return res.status(200).json({ url, file_name })
+    } catch (error) {
+      console.error(error)
+      return res.status(500).json({ error: 'An error occurred while uploading the file' })
+    }
+}
+```
+
+### `app/upload/index.js`
+Your client code could look like this.
+
+```js
+import { useState } from 'react'
+import axios from 'axios'
+
+export default function Home() {
+  const [file, setFile] = useState(null)
+  const [uploadedFile, setUploadedFile] = useState(null)
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0])
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const response = await axios.post('/api/upload', formData)
+      setUploadedFile(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  return (
+    <div>
+      <h1>Upload a file</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="file" onChange={handleFileChange} />
+        <button type="submit">Upload</button>
+      </form>
+      {uploadedFile && (
+        <div>
+          <p>Uploaded file:</p>
+          <p>URL: {uploadedFile.url}</p>
+          <p>Filename: {uploadedFile.file_name}</p>
+        </div>
+      )}
+    </div>
+  )
+}
+```

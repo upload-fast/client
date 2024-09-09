@@ -88,3 +88,47 @@
 		@apply !text-emerald-200;
 	}
 }
+
+/* Copy Button Styles */
+pre {
+	position: relative;
+	@apply md:text-md min-w-fit text-sm;
+}
+
+pre .copy {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	width: 2rem;
+	height: 2rem;
+	background-color: #ffffff;
+	border: none;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: background-color 0.3s ease-in-out;
+}
+
+pre .copy:before {
+	content: '';
+	display: inline-block;
+	width: 1.25rem;
+	height: 1.25rem;
+	background-image: url('/copy.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	transition: transform 0.3s ease-in-out;
+}
+
+pre .copy:hover {
+	background-color: #6c6c6c;
+}
+
+pre .copy.copied:before {
+	content: '';
+	background-image: url('/check.svg');
+	transform: scale(1.2);
+}

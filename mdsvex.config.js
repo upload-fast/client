@@ -1,6 +1,7 @@
 import { defineMDSveXConfig as defineConfig, escapeSvelte } from 'mdsvex';
 
 import { createHighlighter } from 'shiki';
+import { addCopyButton } from './copybutton';
 
 const highlighter = await createHighlighter({
 	themes: ['poimandres'],
@@ -12,7 +13,9 @@ const config = defineConfig({
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
 			await highlighter.loadLanguage('javascript', 'typescript', 'http', 'powershell');
-			const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: 'poimandres' }));
+			const html = escapeSvelte(
+				highlighter.codeToHtml(code, { lang, theme: 'poimandres', transformers: [addCopyButton()] })
+			);
 			return `{@html \`${html}\` }`;
 		}
 	},
