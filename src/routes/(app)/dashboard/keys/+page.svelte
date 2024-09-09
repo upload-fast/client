@@ -67,7 +67,7 @@
 			<div
 				class="flex w-64 flex-row items-center justify-between rounded-sm bg-gray-800 px-3 py-2.5"
 			>
-				<p>{replaceCharacters(key.value)}</p>
+				<p>{replaceCharacters(key.value).slice(0, 30)}</p>
 			</div>
 			<span
 				class={cn(
