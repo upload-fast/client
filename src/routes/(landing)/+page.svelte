@@ -51,7 +51,7 @@
 	<p
 		class="text-balance text-balance mx-auto mt-12 max-w-sm px-4 text-center text-lg sm:px-0 md:text-xl"
 	>
-		You needed a simpler way to build file uploads, so I delivered.
+		A simple way to add image uploads to your apps.
 	</p>
 	<p class="text-balance mx-auto mt-8 max-w-sm px-4 text-center text-lg sm:px-0 md:text-xl">
 		Stop configuring and start shipping.

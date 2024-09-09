@@ -35,8 +35,8 @@
 			<div class="text-xs text-muted-foreground">Plan Type - {plan.plan_type}</div>
 		</Card.Content>
 		<Card.Footer class="text-xs text-muted-foreground"
-			>{plan.paid
-				? 'May the f (ile) be with you.'
+			>{plan.plan_type !== 'Trial'
+				? 'May the f-(ile) be with you.'
 				: 'Upgrade to access more storage space and features.'}</Card.Footer
 		>
 	</Card.Root>
@@ -80,18 +80,23 @@
 <!-- Extract to component later -->
 <div class="mt-12 w-full">
 	<p class="mb-2 font-semibold underline">API KEYS</p>
-	<p>
-		Find out how to use api keys <a href="/docs/API" target="_blank" class="text-green-200">here</a>
-	</p>
+
+	{#if !apiKeys.length}
+		<p>When you create API keys, a preview will be shown here.</p>
+
+		<p>
+			Find out more on UploadFast API keys <a
+				href="/docs/API"
+				target="_blank"
+				class="text-green-200">here</a
+			>
+		</p>
+	{/if}
 
 	<div class="my-3 mt-4 flex flex-col gap-2">
-		{#if !apiKeys}
-			<p>No API keys created</p>
-		{:else}
-			<Button href="/dashboard/keys" class="mb-4 max-w-fit rounded-sm bg-[#E6F6EB] text-[#193B2D]"
-				>Manage api keys <ExternalLinkIcon size={14} class="ml-2" /></Button
-			>
-		{/if}
+		<Button href="/dashboard/keys" class="mb-4 max-w-fit rounded-sm bg-[#E6F6EB] text-[#193B2D]"
+			>Manage api keys <ExternalLinkIcon size={14} class="ml-2" /></Button
+		>
 
 		{#each apiKeys as key}
 			<div class="flex flex-row items-center gap-4">
@@ -118,17 +123,5 @@
 				>
 			</div>
 		{/each}
-
-		<div class="mt-3 flex max-w-md flex-row items-center gap-4">
-			<ActivateApIkey
-				visible={apiKeys.length && !plan.paid}
-				name={userData.name}
-				email={userData.email}
-				userId={userData._id}
-			/>
-			{#if apiKeys.length < 3}
-				<CreateApiKey>Create new API key</CreateApiKey>
-			{/if}
-		</div>
 	</div>
 </div>

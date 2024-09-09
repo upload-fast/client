@@ -1,7 +1,14 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { Button } from '$lib/components/ui/button';
 
 	export let data: Record<any, any>[] = [];
+
+	function savePreset(value: string) {
+		if (browser) {
+			localStorage.setItem('preset', value);
+		}
+	}
 </script>
 
 <div class="lg:py-12" id="pricing">
@@ -101,7 +108,9 @@
 						</li>
 					</ul>
 
-					<Button class="mt-8 w-full" href="/dashboard">Sign up</Button>
+					<Button class="mt-8 w-full" href="/dashboard" on:click={() => savePreset(item.name)}
+						>Sign up</Button
+					>
 				</div>
 			{/each}
 			<!-- First Product -->

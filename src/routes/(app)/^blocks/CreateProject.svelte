@@ -8,6 +8,7 @@
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import Plus from 'lucide-svelte/icons/file-up';
 	import Circle from 'lucide-svelte/icons/loader-circle';
+	import { onMount } from 'svelte';
 
 	let showProjectInitialize = true;
 
@@ -21,16 +22,22 @@
 			await update({ reset: false });
 		};
 	};
+
+	let preset: string;
+
+	onMount(() => {
+		preset = localStorage.getItem('preset') ?? '';
+	});
 </script>
 
-<p class="mb-2 mt-8 text-lg font-[500] underline underline-offset-4">Create a new project</p>
+<p class="mb-2 mt-8 text-lg font-[500] underline underline-offset-4">Create new project.</p>
 
 {#if showProjectInitialize}
 	<button
 		class="group flex h-64 w-64 cursor-pointer items-center justify-center rounded-lg border-2 bg-slate-800 hover:border-primary-foreground"
 		on:click={() => (showProjectInitialize = false)}
 	>
-		<Plus size={44} class="text-fuchsia-300 group-hover:text-primary-foreground" />
+		<Plus size={44} class="text-green-300 group-hover:text-primary-foreground" />
 	</button>
 {/if}
 
@@ -43,20 +50,27 @@
 					<Input
 						name="name"
 						id="name"
-						class="mt-1.5 h-12 w-[70%] bg-background"
-						placeholder={'Buttery Butter App'}
+						type="text"
+						class="mt-1.5 h-12 w-[70%] bg-black/50"
+						placeholder={'Upload-Thing'}
 					/>
 				</span>
 
 				<span>
 					<Label for="plan" class="text-md mb-3">Select a plan</Label>
-					<SelectPlan />
+					<SelectPlan {preset} />
 				</span>
 			</div>
 
 			<div class="mt-4 flex w-full flex-row justify-end gap-4">
-				<Button on:click={() => (showProjectInitialize = true)}>Cancel</Button>
-				<Button variant="outline" class="w-fit" disabled={loading} type="submit">
+				<Button on:click={() => (showProjectInitialize = true)} class="hover:opacity-70"
+					>Cancel</Button
+				>
+				<Button
+					class="w-fit bg-black/80 text-emerald-100/90 hover:bg-black/50"
+					disabled={loading}
+					type="submit"
+				>
 					{#if loading}
 						<Circle class="mx-3 animate-spin" size={12} />
 					{/if}
