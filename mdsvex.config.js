@@ -1,7 +1,7 @@
 import { defineMDSveXConfig as defineConfig, escapeSvelte } from 'mdsvex';
+import { addCopyButton } from 'shiki-transformer-copy-button';
 
 import { createHighlighter } from 'shiki';
-import { addCopyButton } from './copybutton';
 
 const highlighter = await createHighlighter({
 	themes: ['poimandres'],

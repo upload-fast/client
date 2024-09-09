@@ -39,7 +39,7 @@
 			{/each}
 		</ul>
 
-		<ul class="space-y-2 px-6 py-12">
+		<ul class="space-y-2 px-6 py-8">
 			<p class="text-xs font-bold uppercase text-primary-foreground">Guides</p>
 			{#each data.formatted.guide as item}
 				<li>

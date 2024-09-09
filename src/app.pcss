@@ -92,15 +92,15 @@
 /* Copy Button Styles */
 pre {
 	position: relative;
-	@apply md:text-md min-w-fit text-sm;
+	@apply min-w-fit;
 }
 
 pre .copy {
 	position: absolute;
 	top: 0.5rem;
 	right: 0.5rem;
-	width: 2rem;
-	height: 2rem;
+	width: 1.5rem;
+	height: 1.5rem;
 	background-color: #ffffff;
 	border: none;
 	border-radius: 0.25rem;
@@ -114,8 +114,8 @@ pre .copy {
 pre .copy:before {
 	content: '';
 	display: inline-block;
-	width: 1.25rem;
-	height: 1.25rem;
+	width: 1rem;
+	height: 1rem;
 	background-image: url('/copy.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -124,7 +124,7 @@ pre .copy:before {
 }
 
 pre .copy:hover {
-	background-color: #6c6c6c;
+	background-color: #00dd33;
 }
 
 pre .copy.copied:before {
