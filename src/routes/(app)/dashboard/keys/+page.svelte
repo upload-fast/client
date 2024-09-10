@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn, replaceCharacters } from '$lib/utils';
+	import { cn, copyApiKey, replaceCharacters } from '$lib/utils';
 	import Copy from 'lucide-svelte/icons/copy';
 	import Download from 'lucide-svelte/icons/download';
 	import ActivateApIkey from '../../^blocks/ActivateAPIkey.svelte';
@@ -7,7 +7,9 @@
 	import type { ActionData, PageData } from './$types';
 	import { toast } from 'svelte-sonner';
 	import MiscModal from '$lib/components/MiscModal.svelte';
+	import Trash2 from 'lucide-svelte/icons/trash-2';
 	import { Button } from '$lib/components/ui/button';
+	import { invalidate } from '$app/navigation';
 
 	export let data: PageData;
 
@@ -16,9 +18,40 @@
 	let modalVisible = false;
 	let newApiKey = '';
 
-	async function copyApiKey(value: string) {
-		await navigator.clipboard.writeText(value);
-		alert('Copied API key. Keep it safe.');
+	async function deleteKeyAction(key: string) {
+		console.log('Running');
+		try {
+			const response = await fetch('/api/deleteKey', {
+				method: 'POST',
+				body: JSON.stringify({
+					key: key
+				}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
+			const data = await response.json();
+			return data; // This will be the resolved value of the Promise
+		} catch (error) {
+			console.log(error);
+			throw error; // This will reject the Promise
+		}
+	}
+
+	function deleteKey(key: string) {
+		toast.promise(deleteKeyAction(key), {
+			loading: 'Deleting...',
+			success: (data) => {
+                invalidate('app:keys')
+				return 'Key has been deleted successfully';
+			},
+			error: 'Error... :( Try again!'
+		});
 	}
 
 	function displayPrompt(key: string) {
@@ -75,12 +108,13 @@
 					key.active ? 'bg-emerald-500/30 text-green-200' : 'bg-red-500/30 text-red-300'
 				)}>{key.active ? 'active' : 'inactive'}</span
 			>
-			<!-- 
-				<span
-					class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-sm bg-red-500/30"
-				>
-					<Trash2 size={14} class="text-red-300" />
-				</span> -->
+
+			<button
+				class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-sm bg-red-500/20 duration-150 active:scale-95"
+				on:click={() => deleteKey(key.value)}
+			>
+				<Trash2 size={14} class="text-red-200" stroke={'8'} />
+			</button>
 		</div>
 	{/each}
 </div>

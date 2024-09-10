@@ -41,7 +41,7 @@
 		"@auth/sveltekit": "^1.0.0",
 		"@fontsource-variable/instrument-sans": "^5.0.4",
 		"@radix-ui/colors": "^3.0.0",
-		"@uploadfast/client": "^0.0.14",
+		"@uploadfast/client": "^1.0.2",
 		"bits-ui": "^0.21.4",
 		"clsx": "^2.1.0",
 		"lucide-svelte": "^0.372.0",

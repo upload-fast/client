@@ -1,4 +1,5 @@
 import { UPLOADFAST_API_KEY } from '$env/static/private';
+import { createClient } from '@uploadfast/client';
 
 export async function POST({ request }) {
 	const formData = await request.formData();
@@ -9,6 +10,12 @@ export async function POST({ request }) {
 		if (!UPLOAD_KEY) {
 			throw new Error(`Upload API key not passed to request`);
 		}
+
+		// TODO: Use SDK.
+		// const fast = createClient({ apiKey: UPLOAD_KEY });
+
+		// const files = formData.getAll('file');
+
 		const requestOptions: RequestInit = {
 			method: 'POST',
 			body: formData,

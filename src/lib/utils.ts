@@ -92,3 +92,8 @@ export function generateStorageCapString({
 		.toFixed()
 		.toLocaleString()} MB`;
 }
+
+export async function copyApiKey(value: string) {
+	await navigator.clipboard.writeText(value);
+	alert('Copied API key. Keep it safe.');
+}

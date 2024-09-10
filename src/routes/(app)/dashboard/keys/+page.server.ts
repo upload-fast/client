@@ -1,7 +1,8 @@
 import { Key } from '$lib/models/api-keys';
-import { json, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
-export async function load({ locals }) {
+export async function load({ locals, depends }) {
+	depends('app:keys');
 	const session = await locals.auth();
 
 	// Redirect if not authenticated
