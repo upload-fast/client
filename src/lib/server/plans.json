@@ -1,9 +1,9 @@
 [
 	{
 		"name": "Free Trial",
-		"storageCap": "500MB",
-		"description": "For prototyping new startup ideas where you need to upload images.",
-		"uploadsPerMonth": 150,
+		"storageCap": "1GB",
+		"description": "For prototyping new ideas where you need to upload images.",
+		"uploadsPerMonth": 500,
 		"price": "$4 - once",
 		"support": "Limited support.",
 		"sizeLimit": "25MB"

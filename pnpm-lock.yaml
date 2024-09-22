@@ -21,8 +21,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   '@uploadfast/client':
-    specifier: ^0.0.14
-    version: 0.0.14
+    specifier: ^1.0.2
+    version: 1.0.2
   bits-ui:
     specifier: ^0.21.4
     version: 0.21.4(svelte@4.2.7)
@@ -754,8 +754,8 @@ packages:
       '@types/webidl-conversions': 7.0.3
     dev: false
 
-  /@uploadfast/client@0.0.14:
-    resolution: {integrity: sha512-It7FVPG2uBiI3QaW0KnYlxFTeXQC6OjgOlGrDcD33UnVQYqWD1Ym5Jw1odzvkBvHWQIdYQO6FJ2RzfhpWD5fGw==}
+  /@uploadfast/client@1.0.2:
+    resolution: {integrity: sha512-emz0A8tEtvsEqRM4qSQ/Gr7xS3WIcxK86eTAk0fYzDEcntXgiXWfcmchzp/P0MQJlkN4t2sQ/UbBoNaLZQ2jwg==}
     dev: false
 
   /acorn@8.11.3:

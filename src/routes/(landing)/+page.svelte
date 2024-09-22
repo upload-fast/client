@@ -10,11 +10,11 @@
 </script>
 
 <svelte:head>
-	<title>Uploadfast | Do images right.</title>
+	<title>Uploadfast | Add image uploads to your SAAS</title>
 	<OpenGraph
 		siteTitle="UploadFast"
 		pageTitle="UploadFast"
-		metadescription="Add image uploads to your app the right way."
+		metadescription="The easiest way to add image uploads to your SAAS"
 		url="https://www.uploadfast.dev"
 		image="/uploadfast-poster-123.png"
 		squareImage="/uploadfast-poster-123.png"

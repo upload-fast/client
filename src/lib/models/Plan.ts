@@ -15,13 +15,13 @@ export const planSchema = new Schema(
 				//@ts-expect-error
 				switch (this.plan_type) {
 					case 'Test Tier':
-						return 512000;
+						return 1048576;
 					case 'Tier 1':
 						return 5242880;
 					case 'Tier 2':
 						return 10485760;
 					default:
-						return '512000';
+						return '1048576';
 				}
 			}
 		},
@@ -34,13 +34,13 @@ export const planSchema = new Schema(
 				//@ts-expect-error
 				switch (this.plan_type) {
 					case 'Test Tier':
-						return 50;
+						return 500;
 					case 'Tier 1':
 						return 5000;
 					case 'Tier 2':
 						return 100000;
 					default:
-						return 50;
+						return 500;
 				}
 			}
 		}
