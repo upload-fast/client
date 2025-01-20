@@ -14,7 +14,7 @@
 	<OpenGraph
 		siteTitle="UploadFast"
 		pageTitle="UploadFast"
-		metadescription="The easiest way to add image uploads to your SAAS"
+		metadescription="The easiest way to add image uploads to your app."
 		url="https://www.uploadfast.dev"
 		image="/uploadfast-poster-123.png"
 		squareImage="/uploadfast-poster-123.png"

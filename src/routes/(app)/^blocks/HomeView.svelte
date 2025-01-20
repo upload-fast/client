@@ -16,7 +16,7 @@
 	const percentUsed = getPercentOf({ v1: plan.storageUsed, v2: plan.storageCap });
 </script>
 
-<section class="-ml-1 mt-4 grid w-full grid-cols-4 gap-4">
+<section class="-ml-1 mt-4 grid w-full grid-cols-3">
 	<Card.Root class="max-w-sm">
 		<Card.Header class="pb-2">
 			<Card.Description>Your Plan</Card.Description>
@@ -88,6 +88,5 @@
 		<Button href="/dashboard/keys" class="mb-4 max-w-fit rounded-sm bg-[#E6F6EB] text-[#193B2D]"
 			>Manage api keys <ExternalLinkIcon size={14} class="ml-2" /></Button
 		>
-
 	</div>
 </div>

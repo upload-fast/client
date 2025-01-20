@@ -24,11 +24,13 @@
 <main class="hidden min-h-screen w-full flex-col bg-muted/40 p-0 md:flex">
 	<Sidebar />
 	<section class="ml-28 py-6">
-		<Header
-			imageUrl={data.session?.user?.image ?? undefined}
-			username={data.session?.user?.name ?? ''}
-		/>
-		<slot />
+		<div class="mx-auto max-w-7xl">
+			<Header
+				imageUrl={data.session?.user?.image ?? undefined}
+				username={data.session?.user?.name ?? ''}
+			/>
+			<slot />
+		</div>
 	</section>
 </main>
 

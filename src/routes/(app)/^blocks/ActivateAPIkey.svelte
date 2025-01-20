@@ -13,7 +13,7 @@
 
 	function purchasePlan() {
 		loading = true;
-		const checkoutUrl = `https://upload-fast.lemonsqueezy.com/buy/fcdd9d62-446c-462c-b77c-7f9387daff6e
+		const checkoutUrl = `https://upload-fast.lemonsqueezy.com/buy/e1d1f41f-0335-47a1-95ec-26fb5801906b
 		?checkout[email]=${email}
 		&checkout[name]=${name}
 		&checkout[custom][userId]=${userId}
@@ -23,7 +23,7 @@
 	}
 
 	function handleCheckout(data: any) {
-		null;
+		location.reload()
 	}
 
 	onMount(() => {

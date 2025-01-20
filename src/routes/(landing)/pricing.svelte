@@ -14,18 +14,25 @@
 <div class="lg:py-12" id="pricing">
 	<div class="mx-auto mt-8 max-w-7xl px-6 pb-24 lg:px-8">
 		<div class="mx-auto max-w-4xl text-center">
-			<h1 class="text-xl font-semibold leading-7 text-emerald-200">Pricing</h1>
 			<p class="mt-2 text-lg font-bold tracking-tight text-white md:text-4xl">
 				Get started with a one-time payment.
 			</p>
 		</div>
 		<p class="text-md mx-auto mt-4 max-w-2xl text-center leading-8 text-gray-300">
-			Skip the BS and get value immediately.
+			Skip the <strong>BS*</strong>and get value immediately.
 		</p>
 
-		<p class="text-md mx-auto max-w-2xl text-center leading-8 text-gray-300">
-			Sign up > Create API key > Activate key (launches payment flow)
+		<p
+			class="text-md mx-auto mt-1 flex max-w-2xl items-center justify-center gap-2 text-center leading-8 text-gray-300"
+		>
+			<span class="font-semibold text-emerald-300">Sign up</span>
+			<span class="text-gray-500">→</span>
+			<span class="font-semibold text-emerald-300">Create API key</span>
+			<span class="text-gray-500">→</span>
+			<span class="font-semibold text-emerald-300">Activate key</span>
+			<span class="text-gray-400">(launches payment flow)</span>
 		</p>
+
 		<div
 			class="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3"
 		>

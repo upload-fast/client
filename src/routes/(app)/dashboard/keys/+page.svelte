@@ -47,7 +47,7 @@
 		toast.promise(deleteKeyAction(key), {
 			loading: 'Deleting...',
 			success: (data) => {
-                invalidate('app:keys')
+				invalidate('app:keys');
 				return 'Key has been deleted successfully';
 			},
 			error: 'Error... :( Try again!'
@@ -123,7 +123,7 @@
 	<ActivateApIkey
 		visible={data.keys.length && !data.user?.plan.paid}
 		name={data.user.name}
-		email="data.user.email}"
+		email={data.user.email}
 		userId={data.user._id}
 	/>
 

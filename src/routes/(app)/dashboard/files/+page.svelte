@@ -69,7 +69,7 @@
 	}
 </script>
 
-<div class="mt-6 max-w-[90%]">
+<div class="mt-6">
 	<div class="my-4 flex flex-row items-center justify-between">
 		<h2 class="ml-1.5 text-xl font-[550] capitalize text-primary-foreground">
 			{data.user.name}'s uploads
