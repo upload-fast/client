@@ -2,15 +2,6 @@ import { WEBHOOK_SECRET } from '$env/static/private';
 import crypto from 'crypto';
 import { User } from '$lib/models/user.js';
 import { Key } from '$lib/models/api-keys.js';
-import type { PlanModel, planSchema } from '$lib/models/plan.js';
-
-async function buffer(readable: any) {
-	const chunks = [];
-	for await (const chunk of readable) {
-		chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
-	}
-	return Buffer.concat(chunks);
-}
 
 const EVENTS = [
 	'order_created',
