@@ -23,7 +23,7 @@
 	}
 
 	function handleCheckout(data: any) {
-		alert(JSON.stringify(data));
+		null;
 	}
 
 	onMount(() => {

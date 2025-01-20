@@ -51,10 +51,10 @@
 	<p
 		class="text-balance text-balance mx-auto mt-12 max-w-sm px-4 text-center text-lg sm:px-0 md:text-xl"
 	>
-		A simple way to add image uploads to your apps.
+		The simplest way to add image uploads to your apps.
 	</p>
-	<p class="text-balance mx-auto mt-8 max-w-sm px-4 text-center text-lg sm:px-0 md:text-xl">
-		Stop configuring and start shipping.
+	<p class="mx-auto mt-8 max-w-sm px-2 text-center text-lg sm:px-0 md:text-xl">
+		Stop configuring and start shipping (now)
 	</p>
 
 	<div class="mt-12 flex flex-col gap-4 sm:flex-row">

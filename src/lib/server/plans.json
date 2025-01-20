@@ -1,10 +1,10 @@
 [
 	{
-		"name": "Free Trial",
+		"name": "Quick Fix",
 		"storageCap": "1GB",
 		"description": "For prototyping new ideas where you need to upload images.",
 		"uploadsPerMonth": 500,
-		"price": "$4 - once",
+		"price": "4 - once",
 		"support": "Limited support.",
 		"sizeLimit": "25MB"
 	},
@@ -23,7 +23,7 @@
 		"description": "For production apps with frequent image upload and storage needs.",
 		"uploadsPerMonth": 100000,
 		"price": "12 /mo",
-		"sizeLimit": "4.5GB",
+		"sizeLimit": "None",
 		"support": "Team is on hand to help you fix your issues."
 	}
 ]
