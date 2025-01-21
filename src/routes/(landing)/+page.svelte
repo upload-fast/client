@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>Uploadfast | Add image uploads to your SAAS</title>
+	<title>Uploadfast | Build image uploads FAST.</title>
 	<OpenGraph
 		siteTitle="UploadFast"
 		pageTitle="UploadFast"
@@ -54,7 +54,7 @@
 		The simplest way to add image uploads to your apps.
 	</p>
 	<p class="mx-auto mt-8 max-w-sm px-2 text-center text-lg sm:px-0 md:text-xl">
-		Stop configuring and start shipping (now)
+		Get unstuck and ship even faster.
 	</p>
 
 	<div class="mt-12 flex flex-col gap-4 sm:flex-row">
@@ -72,4 +72,93 @@
 	</div>
 </div>
 
-<Pricing data={data.pricingData} />
+<div class="mx-auto max-w-6xl px-6 py-20 sm:px-6 sm:py-32 lg:px-8">
+	<div class="mx-auto max-w-2xl text-center">
+		<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+			Why should you use <span class="relative ml-1.5 text-emerald-300"
+				>Upload-Fast<span class="absolute -bottom-2 left-2 h-[3px] w-full bg-pink-500"></span></span
+			>?
+		</h2>
+	</div>
+	<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-20 lg:max-w-none">
+		<dl
+			class="grid max-w-3xl grid-cols-1 items-center gap-x-12 gap-y-16 lg:max-w-none lg:grid-cols-3"
+		>
+			<div class="flex flex-col">
+				<dt class="text-base font-semibold leading-7">
+					<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-pink-500">
+						<svg
+							class="h-6 w-6 text-white"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+					</div>
+					5x cheaper than S3.
+				</dt>
+				<dd class="text-balance mt-1 flex flex-auto flex-col text-base leading-7">
+					<p class="flex-auto">Object storage got (a lot) cheaper, your service provider didn't.</p>
+				</dd>
+			</div>
+			<div class="flex flex-col">
+				<dt class="text-base font-semibold leading-7">
+					<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-pink-500">
+						<svg
+							class="h-6 w-6 text-white"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+					</div>
+					7-Minute Setup
+				</dt>
+				<dd class="mt-1 flex flex-auto flex-col text-base leading-7">
+					<p class="flex-auto">
+						Get up and running in minutes, not hours. Simple API, clear documentation.
+					</p>
+				</dd>
+			</div>
+			<div class="flex flex-col">
+				<dt class="text-base font-semibold leading-7">
+					<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-pink-500">
+						<svg
+							class="h-6 w-6 text-white"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z"
+							/>
+						</svg>
+					</div>
+					Global CDN
+				</dt>
+				<dd class="mt-1 flex flex-auto flex-col text-base leading-7">
+					<p class="flex-auto">
+						Powered by Cloudflare's global CDN for lightning-fast image delivery worldwide.
+					</p>
+				</dd>
+			</div>
+		</dl>
+	</div>
+</div>
+
+<Pricing />

@@ -10,19 +10,19 @@
 	},
 	{
 		"name": "Tier 1",
-		"storageCap": "10GB",
-		"description": "For apps with infrequent image uploads needs in production",
+		"storageCap": "15GB",
+		"description": "For apps with moderately frequent image uploads needs in production",
 		"uploadsPerMonth": 5000,
 		"price": "7 /mo",
 		"support": "Enthusiastic support via email.",
-		"sizeLimit": "500MB"
+		"sizeLimit": "1GB"
 	},
 	{
 		"name": "Tier 2",
 		"storageCap": "120GB (extendable)",
-		"description": "For production apps with frequent image upload and storage needs.",
-		"uploadsPerMonth": 100000,
-		"price": "12 /mo",
+		"description": "For production apps with frequent image upload and storage needs. (2.5x cheaper for storage than S3)",
+		"uploadsPerMonth": 1000000,
+		"price": "19 /mo",
 		"sizeLimit": "None",
 		"support": "Team is on hand to help you fix your issues."
 	}
