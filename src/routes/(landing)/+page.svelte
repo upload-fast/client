@@ -80,9 +80,10 @@
 			>?
 		</h2>
 	</div>
-	<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-20 lg:max-w-none">
+
+	<div class="ml-24 mt-10 max-w-6xl sm:mt-20 lg:mt-24">
 		<dl
-			class="grid max-w-3xl grid-cols-1 items-center gap-x-12 gap-y-16 lg:max-w-none lg:grid-cols-3"
+			class="grid max-w-2xl grid-cols-1 place-items-center gap-x-20 gap-y-16 lg:max-w-none lg:grid-cols-3"
 		>
 			<div class="flex flex-col">
 				<dt class="text-base font-semibold leading-7">

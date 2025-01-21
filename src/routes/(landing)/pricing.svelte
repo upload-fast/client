@@ -39,7 +39,7 @@
 					<h2 id="product1" class="text-lg font-semibold leading-8 text-white">Quick Fix</h2>
 				</div>
 				<p class="mt-4 text-sm leading-6 text-gray-300 lg:text-base">
-					For prototyping new ideas where you need to upload images.
+					For prototyping new apps where users can upload images.
 				</p>
 				<p class="mt-6 flex items-baseline gap-x-1">
 					<span class="text-4xl font-bold tracking-tight text-white">$4</span>
@@ -199,8 +199,7 @@
 					<h2 id="product3" class="text-lg font-semibold leading-8 text-white">Tier 2</h2>
 				</div>
 				<p class="mt-4 text-sm leading-6 text-gray-300 lg:text-base">
-					For production apps with frequent image upload and storage needs. (2.5x cheaper for
-					storage than S3)
+					For production apps with frequent image upload and storage needs.
 				</p>
 				<p class="mt-6 flex items-baseline gap-x-1">
 					<span class="text-4xl font-bold tracking-tight text-white">$19</span>

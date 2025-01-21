@@ -96,7 +96,7 @@ export async function POST({ request }) {
 
 		case 'subscription_updated': {
 			const plan_type = payload['data']['attributes']['variant_name'] as
-				| 'Trial'
+				| 'Quick Fix'
 				| 'Tier 1'
 				| 'Tier 2';
 
