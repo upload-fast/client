@@ -36,6 +36,6 @@
 		{#if loading}
 			<Circle class="mx-3 animate-spin" size={12} />
 		{/if}
-		<slot>Activate API keys</slot>
+		<slot>Activate all API keys</slot>
 	</Button>
 {/if}

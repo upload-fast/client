@@ -16,7 +16,7 @@
 	href={to}
 >
 	<div class="flex items-center gap-4">
-		<Icon class="h-4 w-4 pl-1" />
+		<Icon class="h-5 w-5 pl-1" />
 		<span class="opacity-0 transition-opacity duration-200 group-hover:opacity-100">{title}</span>
 	</div>
 </a>
