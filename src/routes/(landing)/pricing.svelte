@@ -21,7 +21,7 @@
 		</p>
 
 		<p
-			class="md:text-md mx-auto mt-4 flex max-w-2xl items-center justify-center gap-2 text-center text-xs leading-4 text-gray-300 lg:mt-1"
+			class="md:text-md mx-auto mt-4 flex max-w-2xl items-center justify-center gap-2 text-center text-sm leading-4 text-gray-300 lg:mt-2"
 		>
 			<span class="font-semibold text-emerald-300">Sign up</span>
 			<span class="text-gray-500">→</span>

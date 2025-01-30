@@ -70,9 +70,22 @@
 			href="/dashboard">Dive straight in🚀</Button
 		>
 	</div>
+
+	<a
+		href="https://www.producthunt.com/posts/uploadfast-early-beta?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-uploadfast&#0045;early&#0045;beta"
+		target="_blank"
+		class="mt-12"
+		><img
+			src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=800498&theme=light&t=1737545250573"
+			alt="UploadFast&#0032;&#0040;Early&#0032;Beta&#0041; - The&#0032;file&#0032;upload&#0032;API&#0032;you&#0039;ll&#0032;actually&#0032;enjoy&#0032;using | Product Hunt"
+			style="width: 250px; height: 54px;"
+			width="250"
+			height="54"
+		/></a
+	>
 </div>
 
-<div class="mx-auto max-w-6xl px-6 py-20 sm:px-6 sm:py-32 lg:px-8">
+<div class="mx-auto max-w-6xl px-6 py-20 sm:px-6 sm:py-24 lg:px-8">
 	<div class="mx-auto max-w-2xl text-center">
 		<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
 			Why should you use <span class="relative ml-1.5 text-emerald-300"
@@ -81,7 +94,7 @@
 		</h2>
 	</div>
 
-	<div class="ml-24 mt-10 max-w-6xl sm:mt-20 lg:mt-24">
+	<div class="ml-24 mt-10 max-w-6xl sm:mt-20 lg:mt-20">
 		<dl
 			class="grid max-w-2xl grid-cols-1 place-items-center gap-x-20 gap-y-16 lg:max-w-none lg:grid-cols-3"
 		>

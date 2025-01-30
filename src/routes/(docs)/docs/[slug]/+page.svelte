@@ -1,6 +1,4 @@
 <script lang="ts">
-	import CopyCodeInjector from '$lib/components/CopyCodeInjector.svelte';
-	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import OpenGraph from '$lib/components/OpenGraph.svelte';
 	import Twitter from '$lib/components/Twitter.svelte';

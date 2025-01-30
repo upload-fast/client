@@ -1,27 +1,50 @@
-import { defineMDSveXConfig as defineConfig, escapeSvelte } from 'mdsvex';
-import { addCopyButton } from 'shiki-transformer-copy-button';
+import { defineMDSveXConfig as defineConfig } from 'mdsvex';
 
-import { createHighlighter } from 'shiki';
+import rehypeExpressiveCode from 'rehype-expressive-code';
 
-const highlighter = await createHighlighter({
-	themes: ['poimandres'],
-	langs: ['javascript', 'typescript']
-});
+/** @type {import('rehype-expressive-code').RehypeExpressiveCodeOptions} */
+const rehypeExpressiveCodeOptions = {
+	themes: ['dracula', 'github-light'],
+	styleOverrides: {
+		// You can also override styles
+		borderRadius: '0.5rem',
+		frames: {
+			shadowColor: '#124'
+		}
+	}
+};
+
+// highlight: {
+// 	highlighter: async (code, lang = 'text') => {
+// 		await highlighter.loadLanguage(
+// 			'javascript',
+// 			'typescript',
+// 			'tsx',
+// 			'http',
+// 			'powershell'
+// 		);
+// 		const html = escapeSvelte(
+// 			highlighter.codeToHtml(code, { lang, theme: 'poimandres', transformers: [addCopyButton()] })
+// 		);
+// 		return `{@html \`${html}\` }`;
+// 	}
+// },
+
 const config = defineConfig({
 	extensions: ['.svelte.md', '.md', '.svx'],
 
-	highlight: {
-		highlighter: async (code, lang = 'text') => {
-			await highlighter.loadLanguage('javascript', 'typescript', 'http', 'powershell');
-			const html = escapeSvelte(
-				highlighter.codeToHtml(code, { lang, theme: 'poimandres', transformers: [addCopyButton()] })
-			);
-			return `{@html \`${html}\` }`;
-		}
+	smartypants: {
+		dashes: true,
+		ellipses: true,
+		quotes: true
 	},
 
-	remarkPlugins: []
-	// rehypePlugins: [[rehypePrettyCode, options]]
+	remarkPlugins: [],
+	rehypePlugins: [
+		// The nested array structure is required to pass options
+		// to a rehype plugin
+		[rehypeExpressiveCode, rehypeExpressiveCodeOptions]
+	]
 });
 
 export default config;
