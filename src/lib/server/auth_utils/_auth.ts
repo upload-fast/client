@@ -3,12 +3,13 @@ import Github from '@auth/sveltekit/providers/github';
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import clientPromise from './mongo';
 
+import { Types } from 'mongoose';
+
 export const { handle } = SvelteKitAuth({
 	providers: [Github],
+	// @ts-ignore
 	adapter: MongoDBAdapter(clientPromise, { databaseName: 'Uploadflare' })
 });
-
-import { Types } from 'mongoose';
 
 /**
  * Converts any ObjectId instances in the given value to serializable strings.

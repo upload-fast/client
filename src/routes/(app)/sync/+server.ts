@@ -51,9 +51,10 @@ export async function POST({ request }) {
 	const rawBody = await request.text();
 	const hmac = crypto.createHmac('sha256', WEBHOOK_SECRET);
 	const digest = Buffer.from(hmac.update(rawBody).digest('hex'), 'utf8');
-	const signature = Buffer.from(request.headers.get('x-signature') || '', 'utf8');
+	const signature = Uint8Array.from(Buffer.from(request.headers.get('x-signature') || '', 'utf8'));
+	const digestArray = Uint8Array.from(digest);
 
-	if (!crypto.timingSafeEqual(digest, signature)) {
+	if (!crypto.timingSafeEqual(digestArray, signature)) {
 		return Response.json(
 			{
 				message: 'Invalid signature'
