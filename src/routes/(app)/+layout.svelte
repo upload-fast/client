@@ -23,8 +23,8 @@
 
 <main class="hidden min-h-screen w-full flex-col bg-muted/40 p-0 md:flex">
 	<Sidebar />
-	<section class="ml-28 py-6">
-		<div class="mx-auto max-w-7xl">
+	<section class="ml-64 py-6">
+		<div class="mx-auto max-w-7xl px-6">
 			<Header
 				imageUrl={data.session?.user?.image ?? undefined}
 				username={data.session?.user?.name ?? ''}
@@ -39,3 +39,5 @@
 		Access this page on a larger screen to manage your files.
 	</p>
 </section>
+
+<Toaster />

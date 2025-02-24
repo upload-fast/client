@@ -29,14 +29,14 @@
 		<div class="fixed inset-0 opacity-60 bg-gradient-to-br from-pink-500/30 via-transparent to-orange-500/30 mix-blend-overlay"></div>
 	</div>
 
-	<div class="flex flex-row items-center justify-between px-4 py-2 md:px-8">
+	<div class="flex flex-row items-center justify-between px-4 md:py-8 md:px-8">
 		<div class="flex flex-row items-center py-6 sm:p-0">
 			<img src="/uploadfast.webp" alt="logo" class="h-12 w-12 object-scale-down sm:h-16 sm:w-16" />
-			<p class="hidden font-bold md:block md:text-2xl">
+			<p class="font-bold text-base md:text-2xl">
 				Upload<span
 					class="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"
 					>Fast</span
-				> <small class="text-sm">beta</small>
+				> <small class="md:text-sm text-xs -mt-1">beta</small>
 			</p>
 		</div>
 

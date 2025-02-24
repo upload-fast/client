@@ -1,11 +1,10 @@
 <script lang="ts">
+	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card';
 	import { Progress } from '$lib/components/ui/progress';
-	import { cn, generateStorageCapString, getPercentOf, replaceCharacters } from '$lib/utils';
-	import Copy from 'lucide-svelte/icons/copy';
-	import type { UserType } from '../../../app';
-	import Button from '$lib/components/ui/button/button.svelte';
+	import { generateStorageCapString, getPercentOf } from '$lib/utils';
 	import ExternalLinkIcon from 'lucide-svelte/icons/external-link';
+	import type { UserType } from '../../../app';
 
 	export let apiKeys: any;
 

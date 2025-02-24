@@ -21,7 +21,7 @@
 
 <GithubAuthModal openIt={!Boolean(data.session)} />
 
-{#if Boolean(data?.user?.plan)}
+{#if false}
 	<p>Welcome back {data.user.name}</p>
 	<HomeView plan={data?.user?.plan || null} count={data.fileCount} apiKeys={data.apiKeys} />
 {:else}

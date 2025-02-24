@@ -16,8 +16,8 @@
 		<Select.Value placeholder="Select a plan" class="text-md mr-4" />
 	</Select.Trigger>
 	<Select.Content class="bg-background">
-		<Select.Item value="Trial" label="Free Trial">Free trial</Select.Item>
-		<Select.Item value="Tier 1" label="Tier 1">Tier 1</Select.Item>
-		<Select.Item value="Tier 2" label="Tier 2">Tier 2</Select.Item>
+		<Select.Item value="Trial" label="Trial">🚀 Quick Start</Select.Item>
+		<Select.Item value="Tier 1" label="Tier 1">⭐ Starter</Select.Item>
+		<Select.Item value="Tier 2" label="Tier 2">💎 Pro</Select.Item>
 	</Select.Content>
 </Select.Root>

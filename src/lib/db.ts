@@ -1,19 +1,18 @@
 import mongoose from 'mongoose';
 
-let isConnected = false;
 
 export const connectToDb = async (uri: string) => {
 	try {
-		if (!isConnected) {
-			if (mongoose.connection.readyState !== 1) {
-				//@ts-ignore
-				await mongoose.connect(uri, { dbName: 'Uploadflare', maxPoolSize: 10 });
-				isConnected = true;
-				console.log('Connected!');
-			} else {
-				console.log('Already connected!');
+		if (process.env.NODE_ENV !== 'production') {
+			if ((globalThis as any).cachedConnection && mongoose.connection.readyState === 1) {
+				console.log('Using cached test db connection')
+				return (globalThis as any).cachedConnection
 			}
+			(globalThis as any).cachedConnection = await mongoose.connect(uri, { dbName: 'uploadfast-test' })
+			console.log('Connected to test db!')
+			return (globalThis as any).cachedConnection
 		}
+		await mongoose.connect(uri, { dbName: 'Uploadfast' })
 	} catch (e) {
 		console.log(e);
 	}
