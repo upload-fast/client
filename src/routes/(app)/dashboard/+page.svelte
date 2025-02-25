@@ -1,9 +1,9 @@
 <script lang="ts">
-	import GithubAuthModal from '../^blocks/GithubAuthModal.svelte';
-	import CreateProject from '../^blocks/CreateProject.svelte';
 	import { toast, Toaster } from 'svelte-sonner';
-	import type { PageData, ActionData } from './$types';
+	import CreateProject from '../^blocks/CreateProject.svelte';
+	import GithubAuthModal from '../^blocks/GithubAuthModal.svelte';
 	import HomeView from '../^blocks/HomeView.svelte';
+	import type { ActionData, PageData } from './$types';
 
 	export let data: PageData;
 
@@ -28,4 +28,4 @@
 	<CreateProject />
 {/if}
 
-<Toaster richColors position="top-right" />
+<Toaster richColors position="bottom-right" />

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Header from './^blocks/Header.svelte';
 	import Sidebar from './^blocks/Sidebar.svelte';
 	import type { PageData } from './dashboard/$types';
 	export let data: PageData;
@@ -22,13 +21,12 @@
 </svelte:head>
 
 <main class="hidden min-h-screen w-full flex-col bg-muted/40 p-0 md:flex">
-	<Sidebar />
+	<Sidebar
+		imageUrl={data.session?.user?.image ?? undefined}
+		username={data.session?.user?.name ?? ''}
+	/>
 	<section class="ml-64 py-6">
 		<div class="mx-auto max-w-7xl px-6">
-			<Header
-				imageUrl={data.session?.user?.image ?? undefined}
-				username={data.session?.user?.name ?? ''}
-			/>
 			<slot />
 		</div>
 	</section>
@@ -39,5 +37,3 @@
 		Access this page on a larger screen to manage your files.
 	</p>
 </section>
-
-<Toaster />

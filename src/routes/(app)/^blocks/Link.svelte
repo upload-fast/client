@@ -9,14 +9,14 @@
 
 <a
 	class={cn(
-		'flex items-center gap-4 rounded-lg p-3 transition-colors hover:bg-slate-800',
-		isActive ? 'bg-slate-800/80' : '',
+		'flex items-center gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-gray-800',
+		isActive ? 'bg-gray-800/80' : '',
 		className
 	)}
 	href={to}
 >
-	<div class="flex items-center gap-4">
-		<Icon class="h-5 w-5 text-slate-300" />
-		<span class="text-slate-200">{title}</span>
+	<div class="flex items-center gap-3">
+		<Icon class="h-4 w-4 text-gray-400" />
+		<span class="text-sm text-gray-300">{title}</span>
 	</div>
 </a>

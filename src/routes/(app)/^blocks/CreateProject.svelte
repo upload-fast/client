@@ -9,25 +9,39 @@
 	import Plus from 'lucide-svelte/icons/file-up';
 	import Circle from 'lucide-svelte/icons/loader-circle';
 	import { onMount } from 'svelte';
+	import { toast } from 'svelte-sonner';
 
 	let showProjectInitialize = true;
 
 	let form: any;
 	let loading = false;
+	let formErrors = { name: false, description: false };
+
+	// Add a title and description for the project
+	let projectTitle = '';
+	let projectDescription = '';
+	let preset: string;
+
+	// Validate form fields
+	function validateForm() {
+		formErrors.name = !projectTitle.trim();
+		formErrors.description = !projectDescription.trim();
+		return !formErrors.name && !formErrors.description;
+	}
 
 	const submitForm: SubmitFunction = (input) => {
+		// Validate before submission
+		if (!validateForm()) {
+			toast.error('Please fill in all required fields');
+			return;
+		}
+
 		loading = true;
 		return async ({ update }) => {
 			loading = false;
 			await update({ reset: false });
 		};
 	};
-
-	let preset: string;
-
-	// Add a title and description for the project
-	let projectTitle = '';
-	let projectDescription = '';
 
 	onMount(() => {
 		preset = localStorage.getItem('preset') ?? '';
@@ -64,29 +78,43 @@
 			>
 				<div class="space-y-4">
 					<div>
-						<Label for="name" class="text-sm font-medium text-gray-300">Project Name</Label>
+						<Label for="name" class="text-sm font-medium text-gray-300">
+							Project Name <span class="text-red-400">*</span>
+						</Label>
 						<Input
 							name="name"
 							id="name"
 							type="text"
-							class="mt-1.5 border-gray-700 bg-gray-800/50 focus:border-gray-500 focus:ring-gray-500"
+							class="mt-1.5 border-gray-700 bg-gray-800/50 focus:border-gray-500 focus:ring-gray-500 {formErrors.name
+								? 'border-red-400'
+								: ''}"
 							placeholder="My Awesome Project"
 							bind:value={projectTitle}
+							required
 						/>
+						{#if formErrors.name}
+							<p class="mt-1 text-xs text-red-400">Project name is required</p>
+						{/if}
 					</div>
 
 					<div>
-						<Label for="description" class="text-sm font-medium text-gray-300"
-							>Project Description</Label
-						>
+						<Label for="description" class="text-sm font-medium text-gray-300">
+							Project Description <span class="text-red-400">*</span>
+						</Label>
 						<Input
 							name="description"
 							id="description"
 							type="text"
-							class="mt-1.5 border-gray-700 bg-gray-800/50 focus:border-gray-500 focus:ring-gray-500"
+							class="mt-1.5 border-gray-700 bg-gray-800/50 focus:border-gray-500 focus:ring-gray-500 {formErrors.description
+								? 'border-red-400'
+								: ''}"
 							placeholder="Brief description of your project"
 							bind:value={projectDescription}
+							required
 						/>
+						{#if formErrors.description}
+							<p class="mt-1 text-xs text-red-400">Project description is required</p>
+						{/if}
 					</div>
 
 					<div>
