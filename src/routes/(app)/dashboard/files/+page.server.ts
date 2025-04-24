@@ -10,11 +10,16 @@ export async function load({ locals }) {
 	const session = await locals.auth();
 
 	// Redirect if not authenticated
-	if (!session) {
+	if (!session && !locals._user) {
 		redirect(307, '/dashboard/');
-	}
+	  }
+	
 
 	let user = locals._user;
+
+	if (!user) {
+		redirect(307, '/login');
+	  }
 
 	const files = await UFile.find({ plan_id: user?.plan?._id }).sort({ createdAt: 'desc' });
 
@@ -31,7 +36,7 @@ export async function load({ locals }) {
 	return {
 		files: serialize<Ufile>(files),
 		keys: serialize<{ value: string }>(keys),
-		user: { name: user.name, email: user.email }
+		user: { name: user.name, email: user.email, isEmailVerified: user.isEmailVerified  }
 	};
 }
 
