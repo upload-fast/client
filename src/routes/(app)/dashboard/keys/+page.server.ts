@@ -6,12 +6,15 @@ export async function load({ locals, depends }) {
 	const session = await locals.auth();
 
 	// Redirect if not authenticated
-	if (!session) {
+	if (!session && !locals._user) {
 		redirect(307, '/dashboard/');
 	}
 
 	let user = locals._user;
 
+	if(!user)[
+		redirect(307, 'login')
+	]
 	const keys = await Key.find({ user_id: user._id });
 
 	return {

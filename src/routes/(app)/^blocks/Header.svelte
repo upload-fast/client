@@ -3,7 +3,24 @@
 	export let username: string = '';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { signOut } from '@auth/sveltekit/client';
+	import { goto } from '$app/navigation';
+	import { AUTH_ENDPOINTS } from '$lib/config/api';
+	
+	async function handleLogout() {
+		try {
+			const response = await fetch(AUTH_ENDPOINTS.LOGOUT, {
+				method: 'POST',
+
+			});
+			
+			if (response.ok) {
+				// Clear any local state if needed
+				goto('/login');
+			}
+		} catch (error) {
+			console.error('Logout failed:', error);
+		}
+	}
 </script>
 
 <div class="flex flex-row items-center justify-between pr-16">
@@ -23,7 +40,7 @@
 			<DropdownMenu.Item>My Plan</DropdownMenu.Item>
 			<DropdownMenu.Item>Feedback</DropdownMenu.Item>
 			<DropdownMenu.Separator />
-			<DropdownMenu.Item class="my-1.5" on:click={() => signOut()}>Logout</DropdownMenu.Item>
+			<DropdownMenu.Item class="my-1.5" on:click={handleLogout}>Logout</DropdownMenu.Item>
 		</DropdownMenu.Content>
 	</DropdownMenu.Root>
 </div>

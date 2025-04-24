@@ -14,9 +14,13 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Toaster } from 'svelte-sonner';
 	import Ellipsis from 'lucide-svelte/icons/ellipsis';
+	import VerificationBlock from '../../^blocks/VerificationBlock.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
+
+	// Check if user's email is verified
+	$: isEmailVerified = data.user?.isEmailVerified !== false;
 
 	let modalVisible = false;
 	let newApiKey = '';
@@ -77,82 +81,86 @@
 	}
 </script>
 
-<div class="mt-8 flex flex-row justify-between">
-	<div>
-		<h2 class="mb-2 text-xl font-semibold">API keys</h2>
-		{#if data.keys.length}
-			<p>{!data.user?.plan.paid ? 'Activate your keys to start uploading files.' : ''}</p>
-		{:else}
-			<p>Manage your API keys.</p>
-		{/if}
-	</div>
-
-	<div class="mt-2 flex max-w-md flex-row items-center gap-4">
-		<ActivateApIkey
-			visible={data.keys.length && !data.user?.plan.paid}
-			name={data.user.name}
-			email={data.user.email}
-			userId={data.user._id}
-		/>
-		<CreateApiKey>Create new API key</CreateApiKey>
-	</div>
-</div>
-
-<div class="my-8">
-	<Table.Root class="bg-primary/20 border-border/40 w-full !rounded-lg border !p-5">
-		<Table.Header>
-			<Table.Row class="hover:bg-transparent">
-				<Table.Head>Key</Table.Head>
-				<Table.Head>Status</Table.Head>
-				<Table.Head>Created on</Table.Head>
-				<Table.Head class="text-right">Actions</Table.Head>
-			</Table.Row>
-		</Table.Header>
-		<Table.Body>
+{#if isEmailVerified}
+	<div class="mt-8 flex flex-row justify-between">
+		<div>
+			<h2 class="mb-2 text-xl font-semibold">API keys</h2>
 			{#if data.keys.length}
-				{#each data.keys as key}
-					<Table.Row class="hover:bg-muted/50">
-						<Table.Cell class="truncate font-mono">{replaceCharacters(key.value)}</Table.Cell>
-						<Table.Cell>
-							<span
-								class={cn(
-									'rounded-xl px-2 py-1 text-sm',
-									key.active ? 'bg-emerald-500/30 text-green-200' : 'bg-red-500/30 text-red-300'
-								)}
-							>
-								{key.active ? 'active' : 'invalid'}
-							</span>
-						</Table.Cell>
-						<Table.Cell>
-							{new Date(key.createdAt).toLocaleDateString('en-US', {
-								year: 'numeric',
-								month: 'short',
-								day: 'numeric'
-							})}
-						</Table.Cell>
-						<Table.Cell class="text-right">
-							<DropdownMenu.Root>
-								<DropdownMenu.Trigger asChild let:builder>
-									<Button variant="ghost" builders={[builder]} size="sm"><Ellipsis /></Button>
-								</DropdownMenu.Trigger>
-								<DropdownMenu.Content>
-									<DropdownMenu.Item class="text-red-400" on:click={() => deleteKey(key.value)}>
-										<Trash2 class="mr-2 h-4 w-4" />
-										Delete Key
-									</DropdownMenu.Item>
-								</DropdownMenu.Content>
-							</DropdownMenu.Root>
-						</Table.Cell>
-					</Table.Row>
-				{/each}
+				<p>{!data.user?.plan.paid ? 'Activate your keys to start uploading files.' : ''}</p>
 			{:else}
-				<Table.Row>
-					<Table.Cell colspan={4} class="text-center">No API keys found</Table.Cell>
-				</Table.Row>
+				<p>Manage your API keys.</p>
 			{/if}
-		</Table.Body>
-	</Table.Root>
-</div>
+		</div>
+
+		<div class="mt-2 flex max-w-md flex-row items-center gap-4">
+			<ActivateApIkey
+				visible={data.keys.length && !data.user?.plan.paid}
+				name={data.user.name}
+				email={data.user.email}
+				userId={data.user._id}
+			/>
+			<CreateApiKey>Create new API key</CreateApiKey>
+		</div>
+	</div>
+
+	<div class="my-8">
+		<Table.Root class="bg-primary/20 border-border/40 w-full !rounded-lg border !p-5">
+			<Table.Header>
+				<Table.Row class="hover:bg-transparent">
+					<Table.Head>Key</Table.Head>
+					<Table.Head>Status</Table.Head>
+					<Table.Head>Created on</Table.Head>
+					<Table.Head class="text-right">Actions</Table.Head>
+				</Table.Row>
+			</Table.Header>
+			<Table.Body>
+				{#if data.keys.length}
+					{#each data.keys as key}
+						<Table.Row class="hover:bg-muted/50">
+							<Table.Cell class="truncate font-mono">{replaceCharacters(key.value)}</Table.Cell>
+							<Table.Cell>
+								<span
+									class={cn(
+										'rounded-xl px-2 py-1 text-sm',
+										key.active ? 'bg-emerald-500/30 text-green-200' : 'bg-red-500/30 text-red-300'
+									)}
+								>
+									{key.active ? 'active' : 'invalid'}
+								</span>
+							</Table.Cell>
+							<Table.Cell>
+								{new Date(key.createdAt).toLocaleDateString('en-US', {
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric'
+								})}
+							</Table.Cell>
+							<Table.Cell class="text-right">
+								<DropdownMenu.Root>
+									<DropdownMenu.Trigger asChild let:builder>
+										<Button variant="ghost" builders={[builder]} size="sm"><Ellipsis /></Button>
+									</DropdownMenu.Trigger>
+									<DropdownMenu.Content>
+										<DropdownMenu.Item class="text-red-400" on:click={() => deleteKey(key.value)}>
+											<Trash2 class="mr-2 h-4 w-4" />
+											Delete Key
+										</DropdownMenu.Item>
+									</DropdownMenu.Content>
+								</DropdownMenu.Root>
+							</Table.Cell>
+						</Table.Row>
+					{/each}
+				{:else}
+					<Table.Row>
+						<Table.Cell colspan={4} class="text-center">No API keys found</Table.Cell>
+					</Table.Row>
+				{/if}
+			</Table.Body>
+		</Table.Root>
+	</div>
+{:else}
+	<VerificationBlock action="manage API keys" />
+{/if}
 
 <MiscModal title="" visible={modalVisible} handleClose={() => (modalVisible = false)}>
 	<div slot="content" class="flex flex-col items-center">

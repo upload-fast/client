@@ -5,6 +5,7 @@
 	import FileTable from './file-table.svelte';
 	import MiscModal from '$lib/components/MiscModal.svelte';
 	import { toast } from 'svelte-sonner';
+	import VerificationBlock from '../../^blocks/VerificationBlock.svelte';
 
 	export let data: PageData;
 
@@ -14,6 +15,9 @@
 	$: showModal = false;
 	let PickedFile: File | null = null;
 	let loading = false;
+
+	// Check if user's email is verified
+	$: isEmailVerified = data.user?.isEmailVerified !== false;
 
 	function handleClick() {
 		fileInput.click();
@@ -70,32 +74,36 @@
 </script>
 
 <div class="mt-6">
-	<div class="my-4 flex flex-row items-center justify-between">
-		<h2 class="ml-1.5 text-xl font-[550] capitalize text-primary-foreground">
-			{data.user.name}'s uploads
-		</h2>
+	{#if isEmailVerified}
+		<div class="my-4 flex flex-row items-center justify-between">
+			<h2 class="ml-1.5 text-xl font-[550] capitalize text-primary-foreground">
+				{data.user.name}'s uploads
+			</h2>
 
-		<Button
-			class="align-center text-md order-2 inline-flex gap-3 bg-emerald-800 text-emerald-100 duration-150 active:scale-95"
-			on:click={handleClick}
-		>
-			Upload new file <PlusCircle class="text-primary-foreground" size={14} />
-		</Button>
+			<Button
+				class="align-center text-md order-2 inline-flex gap-3 bg-emerald-800 text-emerald-100 duration-150 active:scale-95"
+				on:click={handleClick}
+			>
+				Upload new file <PlusCircle class="text-primary-foreground" size={14} />
+			</Button>
 
-		<!--Bind the file input to a variable so we can imperatively click it-->
-		<input
-			type="file"
-			id="file"
-			name="file"
-			required
-			class="order-1"
-			hidden
-			bind:this={fileInput}
-			on:change={handleFileChange}
-		/>
-	</div>
+			<!--Bind the file input to a variable so we can imperatively click it-->
+			<input
+				type="file"
+				id="file"
+				name="file"
+				required
+				class="order-1"
+				hidden
+				bind:this={fileInput}
+				on:change={handleFileChange}
+			/>
+		</div>
 
-	<FileTable filesFromServer={data.files} />
+		<FileTable filesFromServer={data.files} />
+	{:else}
+		<VerificationBlock action="upload and manage files" />
+	{/if}
 </div>
 
 <MiscModal visible={showModal}>
